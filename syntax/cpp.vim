@@ -9,8 +9,10 @@ set cindent
 map	[h		:AS<cr>
 map	[H		:A<cr>
 
-inoremap		o
-inoremap	<Shift>	<cr>
+inoremap	
+	o
+inoremap	<Shift>
+	<cr>
 inoremap		{{ {o}O
 inoremap	[if	if () {o}kf(a
 
@@ -19,9 +21,12 @@ python << EOF
 import vim, os
 name = '.'.join(os.path.basename(vim.current.buffer.name).split('.')[:-1])
 defname = '_'.join(os.path.basename(vim.current.buffer.name).split('.')).upper()
-vim.command('normal i#ifndef EDU_UNC_CS_%s' % defname)
-vim.command('normal i#define EDU_UNC_CS_%s' % defname)
-vim.command('normal iclass %s {o};#endifkO' % name)
+vim.command('normal i#ifndef EDU_UNC_CS_%s
+' % defname)
+vim.command('normal i#define EDU_UNC_CS_%s
+' % defname)
+vim.command('normal iclass %s {o};
+#endifkO' % name)
 EOF
 endfunction!
 
