@@ -19,10 +19,7 @@ map!	<c-t>	{\it }i
 map!	<c-b>	{\bf }i
 
 map!	[be	\begin{}o\end{}k$i
-map!	[fi \begin{figure}o\begin{centering}
-\caption{}o\label{}
-\end{centering}
-\end{figure}k$i
+map!	[fi \begin{figure}o\begin{centering}\caption{}o\label{}\end{centering}\end{figure}k$i
 map!	[su	\subsection*{}i
 map!	[se	\section*{}i
 map!	[it	\begin{itemize}o\item o\end{itemize}k$a

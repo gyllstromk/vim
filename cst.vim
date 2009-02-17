@@ -21,3 +21,9 @@ elif not made:
 vim.command(':mak')
 EOF
 endfunction!
+
+inoremap		{{ {o}O
+inoremap	[if	if () {o}kf(a
+inoremap		o
+inoremap	<Shift>	<cr>
+set cindent

@@ -1,12 +1,12 @@
-syntax enable
+source ~/.vim/cst.vim
+"syntax enable
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 set foldmethod=syntax
 set foldnestmax=2
 set foldlevel=1
-set makeprg=javac\ %
-"set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
-set cindent
+set makeprg=ant
+set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
 "syn sync fromstart
 "syntax enable
@@ -33,7 +33,6 @@ map!	[buf BufferedReader = new BufferedReader(onew InputStreamReader());-wi
 map!    [pw 	PrintWriter out = new PrintWriter(, true);Bba
 map!	[deb	Debug.println();hi
 
-inoremap		{{ {o}O
 map!	[main	public static void main(String args[]) {{
 
 "map!	[fi		final static 
@@ -77,7 +76,6 @@ function! ClassDec()
 	return ''
 endfunction!
 
-map	[c	:mak<cr>
 inoremap	[poo <c-r>=GetPackageName()<cr>
 inoremap	[con <c-r>=Constructor()<cr>
 inoremap	[cl	<c-r>=ClassDec()<cr>
