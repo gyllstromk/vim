@@ -5,8 +5,8 @@ syn sync fromstart
 set foldmethod=syntax
 set foldnestmax=2
 set foldlevel=1
-set makeprg=ant
-set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+set makeprg=javac\ %
+"set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
 "syn sync fromstart
 "syntax enable
@@ -16,7 +16,7 @@ set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 "set cinoptions=jN
 
 imap	[rm		String.format(")F"a
-map		[co		:!javac %<cr>
+map		[c		:mak<cr>
 "map		[r		:!/home/karl/src/java/jrun/java <c-r>=GetPackageName()<cr>%<<cr>
 map		[r		:!java %<<cr>
 

@@ -27,3 +27,5 @@ inoremap	[if	if () {o}kf(a
 inoremap		o
 inoremap	<Shift>	<cr>
 set cindent
+
+inoremap	[for	for () {o}kf(a
