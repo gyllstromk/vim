@@ -27,5 +27,6 @@ inoremap	[if	if () {o}kf(a
 inoremap		o
 inoremap	<Shift>	<cr>
 set cindent
+map [gd :VCSVimDiff<cr>
 
 inoremap	[for	for () {o}kf(a

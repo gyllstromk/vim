@@ -3,6 +3,10 @@
 "	echo $x
 "endfunction
 
+imap			[sc		<script type="text/javascript"></script>O
+
+map [gd :VCSVimDiff<cr>
+map			[r		:! open %<cr>
 map			<F1>	:!konqueror %& 2> /dev/null
 noremap!	<bd		<body>o</body>O
 "noremap!	<h1		<h1 align="center"><h1>bhi
