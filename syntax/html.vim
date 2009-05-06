@@ -1,8 +1,3 @@
-"function InsertClosingTag()
-"	let x=getline(".")
-"	echo $x
-"endfunction
-
 imap			[sc		<script type="text/javascript"></script>O
 
 map [gd :VCSVimDiff<cr>
