@@ -1,3 +1,4 @@
+map [v :VCSVimDiff<cr>
 set smartindent
 set keywordprg=pydoc
 set complete=.,b,u
