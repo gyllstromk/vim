@@ -26,7 +26,7 @@ function! EchoVariable(i)
 endfunction
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:!python %<cr>
+map	 [r		:!python2.5 %<cr>
 map! [pr	print 
 map! [wh	while 
 map! [fo	for 
