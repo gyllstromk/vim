@@ -1,4 +1,15 @@
 "set nocindent
+map [v :VCSVimDiff<cr>
+
+function! Open()
+python << EOF
+import vim, os
+if os.path.exists('Makefile'):
+	vim.command(':!make read')
+else:
+	vim.command(':!open %<.pdf<cr>')
+EOF
+endfunction!
 
 function! Compile()
 python << EOF
@@ -11,7 +22,7 @@ EOF
 endfunction!
 
 map!	[im	\usepackage{}i
-map		[r	:!open %<.pdf<cr>
+map		[r	:call Open()<cr>
 map!	[d	\documentclass{}i
 map		[c	:call Compile()<cr>
 
