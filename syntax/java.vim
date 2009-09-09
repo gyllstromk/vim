@@ -15,6 +15,8 @@ set makeprg=javac\ %
 " Needs work
 "set cinoptions=jN
 
+map [m	:s?^?//?<cr>
+
 imap	[rm		String.format(")F"a
 map		[c		:mak<cr>
 "map		[r		:!/home/karl/src/java/jrun/java <c-r>=GetPackageName()<cr>%<<cr>

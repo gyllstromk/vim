@@ -1,6 +1,8 @@
 "set nocindent
 map [v :VCSVimDiff<cr>
 
+map [m	:s?^?%?<cr>
+
 function! Open()
 python << EOF
 import vim, os

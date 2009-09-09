@@ -25,6 +25,8 @@ function! EchoVariable(i)
 	return ''
 endfunction
 
+map [m	:s?^?#?<cr>
+
 map! [cl	<c-r>=InsertClassHeader()<cr>
 map	 [r		:!python %<cr>
 map! [pr	print 
