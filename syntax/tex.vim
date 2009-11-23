@@ -1,6 +1,9 @@
 "set nocindent
+let tlist_tex_settings='latex;b:bibitem;c:command;l:label'
+
 map [v :VCSVimDiff<cr>
 
+map [M	:s?^\_s*%\+??<cr>
 map [m	:s?^?%?<cr>
 
 function! Open()
@@ -32,7 +35,8 @@ map!	<c-t>	{\it }i
 map!	<c-b>	{\bf }i
 
 map!	[be	\begin{}o\end{}k$i
-map!	[fi \begin{figure}o\begin{centering}\caption{}o\label{}\end{centering}\end{figure}k$i
+map!	[ta \begin{table}[ht]\begin{center}\begin{tabular}\end{tabular}\end{center}\end{table}
+map!	[fi \begin{figure}[h]o\capstart\begin{centering}\includegraphics[width=\columnwidth]{}\caption{}o\label{}\end{centering}\end{figure}4k0f{a
 map!	[su	\subsection*{}i
 map!	[se	\section*{}i
 map!	[it	\begin{itemize}o\item o\end{itemize}k$a
