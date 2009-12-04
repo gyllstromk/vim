@@ -12,7 +12,7 @@ import vim, os
 if os.path.exists('Makefile'):
 	vim.command(':!make read')
 else:
-	vim.command(':!open %<.pdf<cr>')
+	vim.command(':!open %<.pdf')
 EOF
 endfunction!
 

@@ -30,3 +30,4 @@ set cindent
 map [v :VCSVimDiff<cr>
 
 inoremap	[for	for () {o}kf(a
+inoremap	[wh	while () {o}kf(a
