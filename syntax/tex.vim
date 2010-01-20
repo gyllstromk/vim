@@ -1,6 +1,9 @@
 "set nocindent
 let tlist_tex_settings='latex;b:bibitem;c:command;l:label'
 
+set textwidth=79
+inoremap  gwap
+
 set spell
 
 map [v :VCSVimDiff<cr>
