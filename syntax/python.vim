@@ -3,6 +3,10 @@ map [v :VCSVimDiff<cr>
 set keywordprg=pydoc
 set complete=.,b,u
 
+setlocal makeprg=(echo\ '[%]';\ pylint-2.6\ --disable-msg=W0312,C0111\ %)  
+setlocal efm=%+P[%f],%t:\ %#%l:%m
+map [c :mak<cr>
+
 "im	:<cr>	:<cr><tab>
 
 function! InsertClassHeader()
