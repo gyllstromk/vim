@@ -36,13 +36,13 @@ map		[r	:call Open()<cr>
 map!	[d	\documentclass{}i
 map		[c	:call Compile()<cr>
 
-map!	<c-t>	{\it }i
-map!	<c-b>	{\bf }i
+inoremap	<c-t>	:s?.*?\\textit{&}<cr>
+inoremap	<c-b>	:s?.*?\\textbf{&}<cr>
 
 map!	[be	\begin{}o\end{}k$i
 map!	[ta \begin{table}[ht]\begin{center}\begin{tabular}\end{tabular}\end{center}\end{table}
 map!	[fi \begin{figure}[h]o\capstart\begin{centering}\includegraphics[width=\columnwidth]{}\caption{}o\label{}\end{centering}\end{figure}4k0f{a
-map!	[su	\subsection*{}i
-map!	[se	\section*{}i
+map!	[su	\subsection{}i
+map!	[se	\section{}i
 map!	[it	\begin{itemize}o\item o\end{itemize}k$a
 "map!	<c-i> {\it }i
