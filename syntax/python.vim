@@ -3,8 +3,13 @@ map [v :VCSVimDiff<cr>
 set keywordprg=pydoc
 set complete=.,b,u
 
-setlocal makeprg=(echo\ '[%]';\ pylint-2.6\ --disable-msg=W0312,C0111,C0103\ %)  
+set expandtab
+
+"setlocal makeprg=(echo\ '[%]';\ pep8\ %)
+"setlocal makeprg=(echo\ '[%]';\ pylint\ %)  
+setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=W0312,C0111,C0103\ %)  
 setlocal efm=%+P[%f],%t:\ %#%l:%m
+
 map [c :mak<cr>
 map [n :cn<cr>
 map [N :cN<cr>
@@ -12,7 +17,7 @@ map [N :cN<cr>
 "im	:<cr>	:<cr><tab>
 
 function! InsertClassHeader()
-	execute "normal Iclass " . GetClassName() . ":\<cr>\t"
+	execute "normal Iclass " . GetClassName() . "(object):\<cr>\t"
 	return ''
 endfunction
 
@@ -34,7 +39,7 @@ endfunction
 map [m	:s?^?#?<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:!python %<cr>
+map	 [r		:! /opt/local/bin/python %<cr>
 map! [pr	print 
 map! [wh	while 
 map! [fo	for 

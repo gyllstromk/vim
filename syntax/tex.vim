@@ -1,6 +1,13 @@
 "set nocindent
 let tlist_tex_settings='latex;b:bibitem;c:command;l:label'
 
+"function Search(prompt)
+"	let searchstring=substitute(input(a:prompt), ' ', '\\_s', 'g')
+"		return a:prompt.searchstring."\n"
+"endfunction
+
+"nnoremap <buffer> <silent> / Search('/')
+
 set textwidth=79
 "inoremap  gwap
 
