@@ -7,9 +7,10 @@ set expandtab
 
 "setlocal makeprg=(echo\ '[%]';\ pep8\ %)
 "setlocal makeprg=(echo\ '[%]';\ pylint\ %)  
-setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=W0312,C0111,C0103\ %)  
+setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=R0903,W0212,W0312,C0111,C0103\ %)  
 setlocal efm=%+P[%f],%t:\ %#%l:%m
 
+inoremap <S-Tab> <C-d>
 map [c :mak<cr>
 map [n :cn<cr>
 map [N :cN<cr>
@@ -39,7 +40,7 @@ endfunction
 map [m	:s?^?#?<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:! /opt/local/bin/python %<cr>
+map	 [r		:! python %<cr>
 map! [pr	print 
 map! [wh	while 
 map! [fo	for 
