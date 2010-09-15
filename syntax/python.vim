@@ -23,7 +23,7 @@ function! InsertClassHeader()
 endfunction
 
 function! InsertConstructor()
-	execute "normal Idef __init__(self):i"
+	execute "normal Idef __init__(self):o"
 	return ''
 endfunction
 
