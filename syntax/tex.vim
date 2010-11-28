@@ -21,8 +21,9 @@ map [m	:s?^?%?<cr>
 function! Open()
 python << EOF
 import vim, os
-if os.path.exists('Makefile'):
-	vim.command(':!make read')
+opened = os.path.exists('Makefile')
+if opened:
+	opened = vim.command(':!make read')
 else:
 	vim.command(':!open %<.pdf')
 EOF

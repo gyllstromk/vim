@@ -40,7 +40,7 @@ endfunction
 map [m	:s?^?#?<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:! /opt/local/bin/python %<cr>
+map	 [r		:! python %<cr>
 map! [pr	print 
 map! [wh	while 
 map! [fo	for 
