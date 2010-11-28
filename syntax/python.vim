@@ -3,11 +3,14 @@ map [v :VCSVimDiff<cr>
 set keywordprg=pydoc
 set complete=.,b,u
 
+"set foldmethod=indent
+"set foldnestmax=1
+
 set expandtab
 
 "setlocal makeprg=(echo\ '[%]';\ pep8\ %)
 "setlocal makeprg=(echo\ '[%]';\ pylint\ %)  
-setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=R0903,W0212,W0312,C0111,C0103\ %)  
+setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=W0511,W0142,W0141,R0912,R0913,R0914,R0903,W0212,W0312,C0111,C0103\ %)  
 setlocal efm=%+P[%f],%t:\ %#%l:%m
 
 inoremap <S-Tab> <C-d>
