@@ -10,9 +10,18 @@ set expandtab
 
 "setlocal makeprg=(echo\ '[%]';\ pep8\ %)
 "setlocal makeprg=(echo\ '[%]';\ pylint\ %)  
-setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=W0511,W0142,W0141,R0912,R0913,R0914,R0903,W0212,W0312,C0111,C0103\ %)  
+setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=R0904,C0301,W0511,W0142,W0141,R0912,R0913,R0914,R0903,W0212,W0312,C0111,C0103\ %)  
 setlocal efm=%+P[%f],%t:\ %#%l:%m
 
+"function! Run()
+"python << EOF
+"import vim
+"
+"vim.eval('return "%s"' % vim.current.line)
+"EOF
+"endfunction
+
+"inoremap [M <c-r>=Run()<cr>
 inoremap <S-Tab> <C-d>
 map [c :mak<cr>
 map [n :cn<cr>
@@ -41,16 +50,15 @@ function! EchoVariable(i)
 endfunction
 
 map [m	:s?^?#?<cr>
+noremap [M	:s?^#??<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
 map	 [r		:! python %<cr>
 map! [pr	print 
-map! [wh	while 
-map! [fo	for 
+map! [fr    from  import2F a
 map! [im	import 
 
 map! [main	if __name__ == '__main__':o
-map! [con	def __init__(self):<cr>
 
 "noremap!  [f	<esc>:let writing=1<cr>i____(self):bbhhhi
 "noremap! <esc>	<c-r>=EchoVariable(writing)<cr>
