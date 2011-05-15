@@ -47,9 +47,11 @@ map		[c	:call Compile()<cr>
 inoremap	<c-t>	:s?.*?\\textit{&}<cr>
 inoremap	<c-b>	:s?.*?\\textbf{&}<cr>
 
+"inoremap		{gq}
+
 map!	[be	\begin{}o\end{}k$i
 map!	[ta \begin{table}[ht]\capstart\begin{center}\begin{tabular}\end{tabular}\end{center}\end{table}
-map!	[fi \begin{figure}[h]o\capstart\begin{centering}\includegraphics[width=\columnwidth]{}\caption{}o\label{}\end{centering}\end{figure}4k0f{a
+map!	[fi \begin{figure}[ht]o\capstart\begin{centering}\includegraphics[width=\columnwidth]{}\caption{}o\label{}\end{centering}\end{figure}4k0f{a
 map!	[su	\subsection{}i
 map!	[se	\section{}i
 map!	[it	\begin{itemize}o\item o\end{itemize}k$a
