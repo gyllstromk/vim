@@ -4,7 +4,7 @@ syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 set foldmethod=syntax
 set foldnestmax=2
-set foldlevel=1
+set foldlevel=2
 set makeprg=javac\ %
 "set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
@@ -16,6 +16,7 @@ set makeprg=javac\ %
 "set cinoptions=jN
 
 map [m	:s?^?//?<cr>
+noremap [M	:s?^\(\s*\)//?\1?<cr>
 
 imap	[rm		String.format(")F"a
 map		[c		:mak<cr>
