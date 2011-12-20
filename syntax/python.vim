@@ -1,4 +1,7 @@
+imap [db import pdb; pdb.set_trace()
 map [v :VCSVimDiff<cr>
+
+"map [TT	<c-r>=SwapTest()<cr>
 "set cindent
 set keywordprg=pydoc
 set complete=.,b,u
@@ -10,7 +13,8 @@ set expandtab
 
 "setlocal makeprg=(echo\ '[%]';\ pep8\ %)
 "setlocal makeprg=(echo\ '[%]';\ pylint\ %)  
-setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=R0904,C0301,W0511,W0142,W0141,R0912,R0913,R0914,R0903,W0212,W0312,C0111,C0103\ %)  
+setlocal makeprg=(echo\ '[%]';\ pylint\ --disable=W0621,R0904,C0301,W0511,W0142,W0141,R0912,R0913,R0914,R0903,W0212,W0312,C0111,C0103\ %)  
+" warning E0602 is important but just conflicts with our parser!
 setlocal efm=%+P[%f],%t:\ %#%l:%m
 
 "function! Run()
@@ -53,7 +57,7 @@ map [m	:s?^?#?<cr>
 noremap [M	:s?^#??<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:! python %<cr>
+map	 [r		:! /usr/bin/python %<cr>
 map! [pr	print 
 map! [fr    from  import2F a
 map! [im	import 
@@ -63,6 +67,14 @@ map! [main	if __name__ == '__main__':o
 "noremap!  [f	<esc>:let writing=1<cr>i____(self):bbhhhi
 "noremap! <esc>	<c-r>=EchoVariable(writing)<cr>
 "<esc>:let writing=0<cr>
+
+function! SwapTest()
+python << EOF
+import vim
+print vim.current.name
+print 'sup'
+EOF
+endfunction
 
 function! Python(mycommand)
 python << EOF
