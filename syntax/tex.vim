@@ -13,6 +13,7 @@ set textwidth=79
 
 set spell
 
+
 map [v :VCSVimDiff<cr>
 
 map [M	:s?^\_s*%\+??<cr>
@@ -44,14 +45,15 @@ map		[r	:call Open()<cr>
 map!	[d	\documentclass{}i
 map		[c	:call Compile()<cr>
 
-inoremap	<c-t>	:s?.*?\\textit{&}<cr>
-inoremap	<c-b>	:s?.*?\\textbf{&}<cr>
+noremap	<c-t>	eb"Aywcw\textit{}P
+inoremap	<c-t>	eb"Aywcw\textit{}P
+inoremap	<c-b>	eb"Aywcw\textbf{}P
 
 "inoremap		{gq}
 
 map!	[be	\begin{}o\end{}k$i
-map!	[ta \begin{table}[ht]\capstart\begin{center}\begin{tabular}\end{tabular}\end{center}\end{table}
-map!	[fi \begin{figure}[ht]o\capstart\begin{centering}\includegraphics[width=\columnwidth]{}\caption{}o\label{}\end{centering}\end{figure}4k0f{a
+map!	[ta \begin{table}[ht]\capstart\begin{center}\tinput{}\end{center}\caption{}\tlabel{}\end{table}
+map!	[fi \begin{figure}[ht]o\capstart\begin{centering}\includegraphics[width=\columnwidth]{}\caption{}o\flabel{}\end{centering}\end{figure}4k0f{a
 map!	[su	\subsection{}i
 map!	[se	\section{}i
 map!	[it	\begin{itemize}o\item o\end{itemize}k$a
