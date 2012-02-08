@@ -13,6 +13,8 @@ set textwidth=79
 
 set spell
 
+set nojoinspaces  " no double space after periods
+
 
 map [v :VCSVimDiff<cr>
 
@@ -48,6 +50,7 @@ map		[c	:call Compile()<cr>
 noremap	<c-t>	eb"Aywcw\textit{}P
 inoremap	<c-t>	eb"Aywcw\textit{}P
 inoremap	<c-b>	eb"Aywcw\textbf{}P
+inoremap	<c-l>	eb"Aywcw\texttt{}P
 
 "inoremap		{gq}
 
