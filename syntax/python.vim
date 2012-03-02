@@ -58,7 +58,7 @@ noremap [M	:s?^#??<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
 map	 [r		:! /usr/bin/python %<cr>
-map! [pr	print 
+map! [pr	print()i
 map! [fr    from  import2F a
 map! [im	import 
 
