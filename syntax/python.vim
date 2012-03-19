@@ -25,7 +25,6 @@ setlocal efm=%+P[%f],%t:\ %#%l:%m
 "EOF
 "endfunction
 
-"inoremap [M <c-r>=Run()<cr>
 inoremap <S-Tab> <C-d>
 map [c :mak<cr>
 map [n :cn<cr>
@@ -57,7 +56,7 @@ map [m	:s?^?#?<cr>
 noremap [M	:s?^#??<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:! /usr/bin/python %<cr>
+map	 [r		:! python %<cr>
 map! [pr	print()i
 map! [fr    from  import2F a
 map! [im	import 
