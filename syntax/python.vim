@@ -53,8 +53,25 @@ function! EchoVariable(i)
 	return ''
 endfunction
 
-map [m	:s?^?#?<cr>
-noremap [M	:s?^#??<cr>
+function! Comment(remove)
+python << endpython
+import vim
+
+if vim.eval('a:remove') != '0':
+    if vim.current.line.startswith('#'):
+        if vim.current.line[1].isspace():
+            pos = 2
+        else:
+            pos = 1
+        vim.current.line = vim.current.line[pos:]
+else:
+    vim.current.line = '# ' + vim.current.line
+endpython
+endfunction
+
+
+map [m	:call Comment(0)<cr>
+noremap [M	:call Comment(1)<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
 map	 [r		:! /usr/bin/python %<cr>
