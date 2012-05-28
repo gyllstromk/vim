@@ -16,7 +16,10 @@ forward = vim.eval('a:forward') == '1'
 
 row = vim.current.window.cursor[0]
 line = vim.current.line
-spaces = count_spaces(line)
+spaces = None
+if line.strip():
+	spaces = count_spaces(line)
+nests = False
 
 if forward:
 	direction = 1
@@ -28,10 +31,15 @@ row += direction
 while 1 <= row <= len(vim.current.buffer):
 	cur = vim.current.buffer[row]
 	line_spaces = count_spaces(cur)
-	if line_spaces != spaces and cur.strip():
-		break
+	if spaces is None:
+		spaces = line_spaces
+
+	if line_spaces > spaces:
+		nests = True
 
 	row += direction
+	if (line_spaces < spaces or (nests and line_spaces == spaces) or line_spaces == spaces == 0) and cur.strip():
+		break
 
 row = max(1, row)
 row = min(len(vim.current.buffer), row)
@@ -39,7 +47,8 @@ row = min(len(vim.current.buffer), row)
 if vis:
 	vim.command('normal! V')
 
-vim.current.window.cursor = (row, 0)
+vim.command('normal %dG' % row)
+#vim.current.window.cursor = (row, 0)
 
 EOF
 endfunction
