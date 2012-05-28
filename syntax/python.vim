@@ -1,15 +1,67 @@
+function! EndOfBlock(forward, vis)
+python << EOF
+
+def count_spaces(line):
+	spaces = 0
+	for i in line:
+		if i.isspace():
+			spaces += 1
+		else:
+			break
+	return spaces
+
+import vim
+vis = vim.eval('a:vis') == '1'
+forward = vim.eval('a:forward') == '1'
+
+row = vim.current.window.cursor[0]
+line = vim.current.line
+spaces = count_spaces(line)
+
+if forward:
+	direction = 1
+else:
+	direction = -1
+
+row += direction
+
+while 1 <= row <= len(vim.current.buffer):
+	cur = vim.current.buffer[row]
+	line_spaces = count_spaces(cur)
+	if line_spaces != spaces and cur.strip():
+		break
+
+	row += direction
+
+row = max(1, row)
+row = min(len(vim.current.buffer), row)
+
+if vis:
+	vim.command('normal! V')
+
+vim.current.window.cursor = (row, 0)
+
+EOF
+endfunction
+
+
+map { :call EndOfBlock(0, 0)<cr>
+map } :call EndOfBlock(1, 0)<cr>
+vmap { :call EndOfBlock(0, 1)<cr>
+vmap } :call EndOfBlock(1, 1)<cr>
+
 imap [db import pdb; pdb.set_trace()
 map [v :VCSVimDiff<cr>
 
 "map [TT	<c-r>=SwapTest()<cr>
-"set cindent
-set keywordprg=pydoc
-set complete=.,b,u
+"setlocal cindent
+setlocal keywordprg=pydoc
+setlocal complete=.,b,u
 
-"set foldmethod=indent
-"set foldnestmax=1
+"setlocal foldmethod=indent
+"setlocal foldnestmax=1
 
-set expandtab
+setlocal expandtab
 
 "setlocal makeprg=(echo\ '[%]';\ pep8\ %)
 "setlocal makeprg=(echo\ '[%]';\ pylint\ %)  
@@ -52,7 +104,7 @@ function! EchoVariable(i)
 	return ''
 endfunction
 
-function! Comment(remove)
+function! AddComment(remove)
 python << endpython
 import vim
 
@@ -69,8 +121,8 @@ endpython
 endfunction
 
 
-map [m	:call Comment(0)<cr>
-noremap [M	:call Comment(1)<cr>
+noremap [n	:call AddComment(0)<cr>
+noremap [N	:call AddComment(1)<cr>
 
 map! [cl	<c-r>=InsertClassHeader()<cr>
 map	 [r		:! python %<cr>
