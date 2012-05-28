@@ -8,13 +8,23 @@ let tlist_tex_settings='latex;b:bibitem;c:command;l:label'
 
 "nnoremap <buffer> <silent> / Search('/')
 
-set textwidth=79
+"set textwidth=79
 "inoremap  gwap
 
 set spell
 
+source ~/.vim/wordwrap.vim
+
 set nojoinspaces  " no double space after periods
 
+set conceallevel=2
+
+syn region inBold concealends matchgroup=bTag start="\textbf" end="}"
+syn region inEmph concealends matchgroup=eTag start="textit" end="}"
+
+hi inBold gui=bold
+hi bTag guifg=blue
+hi inEmph gui=italic
 
 map [v :VCSVimDiff<cr>
 
