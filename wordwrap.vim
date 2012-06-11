@@ -27,27 +27,27 @@ if notwrapped:
 EOF
 endfunction!
 
-noremap [t :call Dd()<cr>
+noremap <buffer> [t :call Dd()<cr>
 
-noremap j gj
-noremap k gk
-set wrap
-set lbr
+noremap <buffer> j gj
+noremap <buffer> k gk
+setlocal wrap
+setlocal lbr
 
-nnoremap dd :call Dd()<cr>
-nnoremap D dg$
-"nnoremap dd g0dg$
+nnoremap <buffer> dd :call Dd()<cr>
+nnoremap <buffer> D dg$
+"nnoremap <buffer> dd g0dg$
 "
-nnoremap yy g0yg$
-nnoremap Y yg$
-nnoremap cc g0cg$
-nnoremap C cg$
-nnoremap A g$a
-nnoremap I g0i
+nnoremap <buffer> yy g0yg$
+nnoremap <buffer> Y yg$
+nnoremap <buffer> cc g0cg$
+nnoremap <buffer> C cg$
+nnoremap <buffer> A g$a
+nnoremap <buffer> I g0i
 
 "nnoremap o g$a
 
-nnoremap V g0vg$
+nnoremap <buffer> V g0vg$
 " XXX does not work here:
 " AAAAAAAAAAAAAAAAAAAAAAAAA
 " AAAAAAAAAAAAAAAAAAAAAAAAA
@@ -57,7 +57,7 @@ nnoremap V g0vg$
 
 "nnoremap L :call Last()<cr>
 
-set spell
+setlocal spell
 
-noremap $ g$
-noremap 0 g0
+noremap <buffer> $ g$
+noremap <buffer> 0 g0

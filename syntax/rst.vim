@@ -19,7 +19,7 @@ endfunction!
 
 source $HOME/.vim/wordwrap.vim
 
-map [r :call Openrst()<cr>
+map <buffer> [r :call Openrst()<cr>
 
-noremap <c-s> :call Titleize(0)<cr>
-noremap <c-t> :call Titleize(1)<cr>
+noremap <buffer> <c-s> :call Titleize(0)<cr>
+noremap <buffer> <c-t> :call Titleize(1)<cr>

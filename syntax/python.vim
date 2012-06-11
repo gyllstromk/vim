@@ -54,13 +54,13 @@ EOF
 endfunction
 
 
-map { :call EndOfBlock(0, 0)<cr>
-map } :call EndOfBlock(1, 0)<cr>
-vmap { :call EndOfBlock(0, 1)<cr>
-vmap } :call EndOfBlock(1, 1)<cr>
+map <buffer> { :call EndOfBlock(0, 0)<cr>
+map <buffer> } :call EndOfBlock(1, 0)<cr>
+vmap <buffer> { :call EndOfBlock(0, 1)<cr>
+vmap <buffer> } :call EndOfBlock(1, 1)<cr>
 
-imap [db import pdb; pdb.set_trace()
-map [v :VCSVimDiff<cr>
+imap <buffer> [db import pdb; pdb.set_trace()
+map <buffer> [v :VCSVimDiff<cr>
 
 "map [TT	<c-r>=SwapTest()<cr>
 "setlocal cindent
@@ -86,10 +86,10 @@ setlocal efm=%+P[%f],%t:\ %#%l:%m
 "EOF
 "endfunction
 
-inoremap <S-Tab> <C-d>
-map [c :mak<cr>
-map [n :cn<cr>
-map [N :cN<cr>
+inoremap <buffer> <S-Tab> <C-d>
+map <buffer> [c :mak<cr>
+map <buffer> [n :cn<cr>
+map <buffer> [N :cN<cr>
 
 "im	:<cr>	:<cr><tab>
 
@@ -113,33 +113,18 @@ function! EchoVariable(i)
 	return ''
 endfunction
 
-function! AddComment(remove)
-python << endpython
-import vim
+source ~/.vim/comment.vim
 
-if vim.eval('a:remove') != '0':
-    if vim.current.line.startswith('#'):
-        if vim.current.line[1].isspace():
-            pos = 2
-        else:
-            pos = 1
-        vim.current.line = vim.current.line[pos:]
-else:
-    vim.current.line = '# ' + vim.current.line
-endpython
-endfunction
+noremap <buffer> [n	:call AddComment(0, '#')<cr>
+noremap <buffer> [N	:call AddComment(1, '#')<cr>
 
+map! <buffer> [cl	<c-r>=InsertClassHeader()<cr>
+map <buffer>	 [r		:! python %<cr>
+map! <buffer> [pr	print()i
+map! <buffer> [fr    from  import2F a
+map! <buffer> [im	import 
 
-noremap [n	:call AddComment(0)<cr>
-noremap [N	:call AddComment(1)<cr>
-
-map! [cl	<c-r>=InsertClassHeader()<cr>
-map	 [r		:! python %<cr>
-map! [pr	print()i
-map! [fr    from  import2F a
-map! [im	import 
-
-map! [main	if __name__ == '__main__':o
+map! <buffer> [main	if __name__ == '__main__':o
 
 "noremap!  [f	<esc>:let writing=1<cr>i____(self):bbhhhi
 "noremap! <esc>	<c-r>=EchoVariable(writing)<cr>
@@ -192,6 +177,6 @@ if string.find(vim.current.line, 'if (') != -1: # make more elegant test
 EOF
 endfunction
 
-map!		[if		<c-r>=Python('if')<cr>
-map!		[con	<c-r>=InsertConstructor()<cr>
+map! <buffer>		[if		<c-r>=Python('if')<cr>
+map! <buffer>		[con	<c-r>=InsertConstructor()<cr>
 "noremap!	<esc>	<c-r>=CheckEscape()<cr>
