@@ -28,8 +28,8 @@ hi inEmph gui=italic
 
 map [v :VCSVimDiff<cr>
 
-map [M	:s?^\_s*%\+??<cr>
-map [m	:s?^?%?<cr>
+map [N	:s?^\_s*%\+??<cr>
+map [n	:s?^?%?<cr>
 
 function! Open()
 python << EOF

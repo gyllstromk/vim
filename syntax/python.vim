@@ -120,7 +120,8 @@ noremap <buffer> [N	:call AddComment(1, '#')<cr>
 
 map! <buffer> [cl	<c-r>=InsertClassHeader()<cr>
 map <buffer>	 [r		:! python %<cr>
-map! <buffer> [pr	print()i
+"map! <buffer> [pr	print()i
+map! <buffer> [pr	print 
 map! <buffer> [fr    from  import2F a
 map! <buffer> [im	import 
 
