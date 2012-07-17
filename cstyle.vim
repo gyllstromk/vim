@@ -25,7 +25,7 @@ inoremap		{{ {o}O
 "noreab		if		<c-r>=CreateConditionalStatement("f")<cr>
 
 "noremap!			<c-r>=Escappe()<cr>				
-inoremap		o
+"inoremap		o
 inoremap	<Shift>	<cr>
 "<c-r>=Enterr()<cr>
 
