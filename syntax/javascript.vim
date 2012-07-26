@@ -5,10 +5,13 @@ setlocal expandtab
 
 noremap <buffer> [n	:call AddComment(0, '//')<cr>
 noremap <buffer> [N	:call AddComment(1, '//')<cr>
-imap <buffer> [pr console.log();F(a
+inoremap <buffer> [pr console.log();F(a
 
-inoremap <buffer> [fu function() {o}
+inoremap <buffer> [fu function() {}kf{hhi
 imap <buffer> [im require('')F'i
 
 map <buffer> [r :!node %<cr>
-inoremap <buffer> /**	/***/O* 
+inoremap <buffer> /**	/**/O
+
+"inoremap <buffer> (	()i
+inoremap <buffer> {{ {}O
