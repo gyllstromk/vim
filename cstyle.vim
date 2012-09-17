@@ -16,7 +16,7 @@ map	[H		:A<cr>
 
 inoremap	[try	try {o} catch O
 
-inoremap	[ex		(Exception e) {o}O
+"inoremap	[ex		(Exception e) {o}O
 
 
 inoremap		{{ {o}O

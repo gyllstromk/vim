@@ -87,9 +87,6 @@ setlocal efm=%+P[%f],%t:\ %#%l:%m
 "endfunction
 
 inoremap <buffer> <S-Tab> <C-d>
-map <buffer> [c :mak<cr>
-map <buffer> [n :cn<cr>
-map <buffer> [N :cN<cr>
 
 "im	:<cr>	:<cr><tab>
 
@@ -113,6 +110,7 @@ function! EchoVariable(i)
 	return ''
 endfunction
 
+source ~/.vim/compile.vim
 source ~/.vim/comment.vim
 
 noremap <buffer> [n	:call AddComment(0, '#')<cr>

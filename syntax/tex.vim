@@ -1,4 +1,7 @@
 "set nocindent
+
+let g:tex_flavor='latex'
+
 let tlist_tex_settings='latex;b:bibitem;c:command;l:label'
 
 "function Search(prompt)
