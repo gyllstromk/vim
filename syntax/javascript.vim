@@ -55,7 +55,7 @@ inoremap <buffer> [wa logger.warn();F(a
 inoremap <buffer> [pr console.log();F(a
 "inoremap <buffer> [pr :call Log()<cr>f(a
 
-inoremap <buffer> [fu function() {}k$F(a
+inoremap <buffer> [fu function () {}k$F(a
 inoremap <buffer> [im require('')F'i
 
 setlocal makeprg=(jshint\ %)
