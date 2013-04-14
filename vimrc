@@ -6,6 +6,8 @@ set autowrite
 set ruler
 set bs=2
 
+set undofile " persistent undo
+
 set pastetoggle=<F2>
 
 call pathogen#infect()
