@@ -8,6 +8,9 @@ set bs=2
 
 set undofile " persistent undo
 
+set relativenumber
+set colorcolumn=80
+
 set pastetoggle=<F2>
 
 call pathogen#infect()
