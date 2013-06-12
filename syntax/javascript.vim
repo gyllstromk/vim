@@ -9,7 +9,7 @@ line = vim.current.line
 if line.find(';') == -1 and line.find('{') == -1:
     if line.find('catch') >= 0:
         line += ' {'
-    elif line.find(':') >= 0:
+    elif line.find(':') >= 0 and line[-1] != ',':
         line += ','
     elif line[-1] == ',':
         pass
