@@ -15,6 +15,8 @@ set pastetoggle=<F2>
 
 call pathogen#infect()
 
+map <buffer> [v :Gdiff<cr>
+
 "set rnu
 
 if has("gui_running")

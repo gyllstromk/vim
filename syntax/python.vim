@@ -60,7 +60,6 @@ vmap <buffer> { :call EndOfBlock(0, 1)<cr>
 vmap <buffer> } :call EndOfBlock(1, 1)<cr>
 
 imap <buffer> [db import pdb; pdb.set_trace()
-map <buffer> [v :VCSVimDiff<cr>
 
 "map [TT	<c-r>=SwapTest()<cr>
 "setlocal cindent
