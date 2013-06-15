@@ -15,8 +15,6 @@ set pastetoggle=<F2>
 
 call pathogen#infect()
 
-map <buffer> [v :Gdiff<cr>
-
 "set rnu
 
 if has("gui_running")
@@ -78,6 +76,8 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black 
 
 autocmd!
+
+map [v :Gdiff<cr>
 
 " Buffer exploring
 map		[a		\be
