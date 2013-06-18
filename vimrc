@@ -45,8 +45,6 @@ set completeopt=menu,longest  " find longest common string
 set wildmode=longest:full
 set wildmenu
 
-let g:VCSCommandDeleteOnHide=1
-
 set shell=zsh
 
 set ignorecase
@@ -78,6 +76,8 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black 
 
 autocmd!
+
+map [v :Gdiff<cr>
 
 " Buffer exploring
 map		[a		\be

@@ -29,8 +29,6 @@ hi inBold gui=bold
 hi bTag guifg=blue
 hi inEmph gui=italic
 
-map [v :VCSVimDiff<cr>
-
 map [N	:s?^\_s*%\+??<cr>
 map [n	:s?^?%?<cr>
 

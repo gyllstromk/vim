@@ -2,8 +2,6 @@ set cindent
 set foldmethod=syntax
 syn region myFold start="{" end="}" transparent fold
 
-map [v :VCSVimDiff<cr>
-
 " a.vim
 "set foldmethod=syntax
 "syn region myFold start="{" end="}" transparent fold
