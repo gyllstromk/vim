@@ -60,7 +60,7 @@ inoremap <buffer> [pr console.log();F(a
 inoremap <buffer> [fu function () {}k$F(a
 inoremap <buffer> [im require('')F'i
 
-setlocal makeprg=(jshint\ %)
+setlocal makeprg=(./node_modules/.bin/jshint\ %)
 setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 map <buffer> [r :!node %<cr>
 
