@@ -77,6 +77,7 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 
 autocmd!
 
+map [g :Gstatus<cr>
 map [v :Gdiff<cr>
 
 " Buffer exploring
