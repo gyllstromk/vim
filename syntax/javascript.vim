@@ -67,7 +67,6 @@ map <buffer> [r :!node %<cr>
 inoremap <buffer> /**   /**/O
 
 "inoremap <buffer> (    ()i
-inoremap <buffer> {{ {}O
 
 inoremap <buffer> ==    ===
 inoremap <buffer> !=    !==

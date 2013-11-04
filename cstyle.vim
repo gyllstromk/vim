@@ -17,7 +17,7 @@ inoremap	[try	try {o} catch O
 "inoremap	[ex		(Exception e) {o}O
 
 
-inoremap		{{ {o}O
+inoremap		{ {}O
 "inoremap		[{	{  }hi
 
 "noreab		if		<c-r>=CreateConditionalStatement("f")<cr>
