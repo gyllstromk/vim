@@ -112,6 +112,7 @@ inoremap	[if	if () {o}kf(a
 "<cr>if () {o}kf(a
 inoremap	[fo		for () {o}kf(a
 inoremap	[wh		while () {o}kf(a
+inoremap     A
 "inoremap	[if	<ESC>:call TryIf()<cr>ccif () {o}kf(a
 "<cr>if () {o}kf(a
 "inoremap	[fo		<ESC>:call TryIf()<cr>ccfor () {o}kf(a
