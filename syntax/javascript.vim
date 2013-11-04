@@ -11,7 +11,7 @@ if line.find(';') == -1 and line.find('{') == -1:
         line += ' {'
     elif line.find(':') >= 0 and line[-1] != ',':
         line += ','
-    elif line[-1] == ',':
+    elif line[-1] in ',>':
         pass
     else:
         line += ';'
