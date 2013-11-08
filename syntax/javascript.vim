@@ -45,9 +45,9 @@ python << EOF
 
 import vim
 
-# we define a test as one in which one of the first 5 lines starts with
+# we define a test as one in which one of the first 10 lines starts with
 # 'describe'
-for line in vim.current.buffer[0:5]:
+for line in vim.current.buffer[0:10]:
     if line.startswith('describe'):
         vim.command(':! ./node_modules/.bin/mocha %')
         break
