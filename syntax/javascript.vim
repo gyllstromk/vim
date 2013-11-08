@@ -40,6 +40,24 @@ vim.current.buffer[pos[0] - 1] = line
 EOF
 endfunction
 
+function! Run()
+python << EOF
+
+import vim
+
+# we define a test as one in which one of the first 5 lines starts with
+# 'describe'
+for line in vim.current.buffer[0:5]:
+    if line.startswith('describe'):
+        vim.command(':! ./node_modules/.bin/mocha %')
+        break
+else:
+    vim.command(':! node %')
+
+EOF
+endfunction
+
+
 source ~/.vim/cstyle.vim
 source ~/.vim/comment.vim
 source ~/.vim/compile.vim
@@ -62,7 +80,7 @@ inoremap <buffer> [im require('')F'i
 
 setlocal makeprg=(./node_modules/.bin/jshint\ %)
 setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
-map <buffer> [r :!node %<cr>
+map <buffer> [r :call Run()<cr>
 
 inoremap <buffer> /**   /**/O
 
