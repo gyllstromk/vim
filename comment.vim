@@ -1,8 +1,8 @@
-function! AddComment(remove, commentchar)
+function! AddComment(remove)
 python << endpython
 import vim
 
-commentchar = vim.eval('a:commentchar')
+commentchar = vim.eval('g:commentchar')
 
 if vim.eval('a:remove') != '0':
     if vim.current.line.startswith(commentchar):
@@ -16,3 +16,5 @@ else:
 endpython
 endfunction
 
+noremap <buffer> [n :call AddComment(0)<cr>
+noremap <buffer> [N :call AddComment(1)<cr>
