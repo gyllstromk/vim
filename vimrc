@@ -107,7 +107,6 @@ map	<c-h>	<c-w>h
 map	<c-k>	<c-w>k
 map	<c-j>	<c-w>j
 map <c-n>	:cn<cr>
-map <c-N>	:cN<cr>
 
 "highlight	Type		ctermfg=blue	guifg=Blue
 "highlight	Constant	ctermfg=blue	guifg=Blue
