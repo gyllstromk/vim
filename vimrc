@@ -6,6 +6,7 @@ set shiftwidth=4
 set autowrite
 set ruler
 set bs=2
+set mouse=a " allow scrolling
 
 set undofile " persistent undo
 
