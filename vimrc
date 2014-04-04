@@ -125,3 +125,6 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 inoremap <buffer> <S-Tab> <C-d>
+
+let @o = "dd/===V/>>>x/<<<"
+let @t = "V/===x/>>>dd/<<<"
