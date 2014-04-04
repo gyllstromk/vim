@@ -89,9 +89,9 @@ map [g :Gstatus<cr>
 map [v :Gdiff<cr>
 
 " Buffer exploring
-map		[a		\be
-map		[j		\bs
-map		[J		\bv
+map		[a		<leader>be
+map		[j		<leader>bs
+map		[J		<leader>bv
 
 "Emulate how "Y" _should_ work
 noremap Y y$
