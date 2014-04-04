@@ -1,3 +1,4 @@
+let mapleader = "["
 syntax enable
 set viminfo='1000,f1,:100,@100,/100,h,%
 set tabstop=4
