@@ -42,7 +42,10 @@ endfunction
 "inoremap <tab>	<c-r>=InsertTabWrapper()<cr>
 "noremap! [<tab>	<tab>
 "noremap! <C-Tab>	<tab>
-inoremap <S-Tab> <C-d>
+
+if &diff
+    noremap <C-c> :qa<cr>
+endif
 
 set completeopt=menu,longest  " find longest common string
 
