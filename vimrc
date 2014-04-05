@@ -1,3 +1,4 @@
+let mapleader = "["
 syntax enable
 set viminfo='1000,f1,:100,@100,/100,h,%
 set tabstop=4
@@ -5,6 +6,7 @@ set shiftwidth=4
 set autowrite
 set ruler
 set bs=2
+set mouse=a " allow scrolling
 
 set undofile " persistent undo
 
@@ -40,7 +42,10 @@ endfunction
 "inoremap <tab>	<c-r>=InsertTabWrapper()<cr>
 "noremap! [<tab>	<tab>
 "noremap! <C-Tab>	<tab>
-inoremap <S-Tab> <C-d>
+
+if &diff
+    noremap <C-c> :qa<cr>
+endif
 
 set completeopt=menu,longest  " find longest common string
 
@@ -84,9 +89,9 @@ map [g :Gstatus<cr>
 map [v :Gdiff<cr>
 
 " Buffer exploring
-map		[a		\be
-map		[j		\bs
-map		[J		\bv
+map		[a		<leader>be
+map		[j		<leader>bs
+map		[J		<leader>bv
 
 "Emulate how "Y" _should_ work
 noremap Y y$
@@ -102,7 +107,6 @@ map	<c-h>	<c-w>h
 map	<c-k>	<c-w>k
 map	<c-j>	<c-w>j
 map <c-n>	:cn<cr>
-map <c-N>	:cN<cr>
 
 "highlight	Type		ctermfg=blue	guifg=Blue
 "highlight	Constant	ctermfg=blue	guifg=Blue
@@ -121,3 +125,6 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 inoremap <buffer> <S-Tab> <C-d>
+
+let @o = "dd/===V/>>>x/<<<"
+let @t = "V/===x/>>>dd/<<<"

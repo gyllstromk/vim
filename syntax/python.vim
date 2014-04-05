@@ -148,6 +148,7 @@ def getCurrentIndent():
 		else:
 			break
 	return s
+
 vim.current.line = str(a:mycommand)
 	#indent = getCurrentIndent()
 	#cond = string.strip(vim.current.line)
@@ -175,6 +176,6 @@ if string.find(vim.current.line, 'if (') != -1: # make more elegant test
 EOF
 endfunction
 
-map! <buffer>		[if		<c-r>=Python('if')<cr>
+map! <buffer>		[if		if :i
 map! <buffer>		[con	<c-r>=InsertConstructor()<cr>
 "noremap!	<esc>	<c-r>=CheckEscape()<cr>

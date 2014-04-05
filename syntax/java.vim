@@ -1,12 +1,16 @@
-source ~/.vim/cst.vim
-"syntax enable
+source ~/.vim/cstyle.vim
+let g:commentchar = '//'
+source ~/.vim/comment.vim
+
+let g:SuperTabDefaultCompletionType = 'context'
+
 syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 set foldmethod=syntax
 set foldnestmax=2
 set foldlevel=2
-set makeprg=javac\ %
-"set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+
+set colorcolumn=120
 
 "syn sync fromstart
 "syntax enable
@@ -15,28 +19,23 @@ set makeprg=javac\ %
 " Needs work
 "set cinoptions=jN
 
-map [m	:s?^?//?<cr>
-noremap [M	:s?^\(\s*\)//?\1?<cr>
+imap <buffer>	[rm		String.format(")F"a
+"map <buffer>		[r		:!/home/karl/src/java/jrun/java <c-r>=GetPackageName()<cr>%<<cr>
+map <buffer> <leader>r :JUnit %<cr>
 
-imap	[rm		String.format(")F"a
-map		[c		:mak<cr>
-"map		[r		:!/home/karl/src/java/jrun/java <c-r>=GetPackageName()<cr>%<<cr>
-map		[r		:!java %<<cr>
+noremap <buffer>	<C-i> :JavaImport<cr>
+noremap <buffer>	<leader>im		:JavaImport<cr>
+imap <buffer>	[ij		import java.;i
 
-map		[im		iimport java.;i
-map!	[im		import java.;i
+map! <buffer>	[pf		System.out.println();F)i[rm
+map! <buffer>	[pr		System.out.println();F)i
+map! <buffer>	[ln		System.out.println();ba
 
-map!	[pf		System.out.println();F)i[rm
-map!	[pr		System.out.println();F)i
-map!	[ln		System.out.println();ba
+map! <buffer>	[buf BufferedReader = new BufferedReader(onew InputStreamReader());-wi
+map! <buffer>    [pw 	PrintWriter out = new PrintWriter(, true);Bba
+map! <buffer>	[deb	Debug.println();hi
 
-map!	[er		System.err.println();ba
-
-map!	[buf BufferedReader = new BufferedReader(onew InputStreamReader());-wi
-map!    [pw 	PrintWriter out = new PrintWriter(, true);Bba
-map!	[deb	Debug.println();hi
-
-map!	[main	public static void main(String args[]) {{
+map! <buffer>	[main	public static void main(String[] args) {
 
 "map!	[fi		final static 
 
@@ -68,17 +67,32 @@ function! GetBlockType(line)
 	return y
 endfunction!
 
+function! GetClassName()
+    return expand("%:t:r")
+endfunction!
+
 function! Constructor()
-	execute "normal ipublic " . GetClassName() . "() {o}kf)"
+	execute "normal i/**/public " . GetClassName() . "() {o}kf)"
 	return ''
 endfunction!
 
 function! ClassDec()
-	execute "normal iclass " . GetClassName() . " {o}kf{h"
-	"execute "normal iclass " . GetClassName() . " {o}kf{hi"
+	execute "normal i/**@author stromk/public class " . GetClassName() . " {o}kf{h"
 	return ''
 endfunction!
 
-inoremap	[poo <c-r>=GetPackageName()<cr>
-inoremap	[con <c-r>=Constructor()<cr>
-inoremap	[cl	<c-r>=ClassDec()<cr>
+inoremap <buffer>	[poo <c-r>=GetPackageName()<cr>
+inoremap <buffer>	[con <c-r>=Constructor()<cr>
+inoremap <buffer>	[cl	<c-r>=ClassDec()<cr>
+inoremap <buffer>   [in log.info("");F"i
+inoremap <buffer>   [wa log.warn("");F"i
+inoremap <buffer>   [er log.error("");F"i
+
+noremap <buffer> [c :set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#,[checkstyle]\ %f:%l:%c:\ %m,[checkstyle]\ %f:%l:\ %m<cr>:set makeprg=brazil-build\ checkstyle<cr>:make<cr>
+
+inoremap <buffer>   [dc /**@author stromk/kkkA 
+inoremap <buffer>   [do /**/O
+
+"augroup Java
+"    au BufNewFile *.java 0r ~/.vim/skeletons/skel.java
+"augroup end
