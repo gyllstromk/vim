@@ -47,9 +47,9 @@ import vim
 
 # we define a test as one in which one of the first 10 lines starts with
 # 'describe'
-for line in vim.current.buffer[0:10]:
+for line in vim.current.buffer:
     if line.startswith('describe'):
-        vim.command(':! ./node_modules/.bin/mocha %')
+        vim.command(':! ./node_modules/.bin/mocha --bail %')
         break
 else:
     vim.command(':! node %')
