@@ -109,7 +109,6 @@ function! EchoVariable(i)
 	return ''
 endfunction
 
-source ~/.vim/compile.vim
 source ~/.vim/comment.vim
 
 noremap <buffer> [n	:call AddComment(0, '#')<cr>
