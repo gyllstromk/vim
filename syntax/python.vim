@@ -53,6 +53,8 @@ vim.command('normal %dG' % row)
 EOF
 endfunction
 
+let g:commentchar = '#'
+source ~/.vim/comment.vim
 
 map <buffer> { :call EndOfBlock(0, 0)<cr>
 map <buffer> } :call EndOfBlock(1, 0)<cr>
@@ -108,12 +110,6 @@ function! EchoVariable(i)
 	endif
 	return ''
 endfunction
-
-source ~/.vim/compile.vim
-source ~/.vim/comment.vim
-
-noremap <buffer> [n	:call AddComment(0, '#')<cr>
-noremap <buffer> [N	:call AddComment(1, '#')<cr>
 
 map! <buffer> [cl	<c-r>=InsertClassHeader()<cr>
 map <buffer>	 [r		:! python %<cr>
