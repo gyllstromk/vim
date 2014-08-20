@@ -21,7 +21,7 @@ set colorcolumn=120
 
 imap <buffer>	[rm		String.format(")F"a
 "map <buffer>		[r		:!/home/karl/src/java/jrun/java <c-r>=GetPackageName()<cr>%<<cr>
-map <buffer> <leader>r :JUnit %<cr>
+map <buffer> <leader>r :java %<<cr>
 
 noremap <buffer>	<C-i> :JavaImport<cr>
 noremap <buffer>	<leader>im		:JavaImport<cr>
@@ -88,7 +88,8 @@ inoremap <buffer>   [in log.info("");F"i
 inoremap <buffer>   [wa log.warn("");F"i
 inoremap <buffer>   [er log.error("");F"i
 
-noremap <buffer> [c :set errorformat=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#,[checkstyle]\ %f:%l:%c:\ %m,[checkstyle]\ %f:%l:\ %m<cr>:set makeprg=brazil-build\ checkstyle<cr>:make<cr>
+noremap <buffer> [c :mak<cr>
+set makeprg=javac\ %
 
 inoremap <buffer>   [dc /**@author stromk/kkkA 
 inoremap <buffer>   [do /**/O

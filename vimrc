@@ -6,7 +6,6 @@ set shiftwidth=4
 set autowrite
 set ruler
 set bs=2
-set mouse=a " allow scrolling
 
 set undofile " persistent undo
 
@@ -125,6 +124,8 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 inoremap <buffer> <S-Tab> <C-d>
+
+au BufRead,BufNewFile *.txt setfiletype text
 
 let @o = "dd/===V/>>>x/<<<"
 let @t = "V/===x/>>>dd/<<<"
