@@ -65,8 +65,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 setlocal expandtab
 
-noremap <buffer> [n :call AddComment(0, '//')<cr>
-noremap <buffer> [N :call AddComment(1, '//')<cr>
+let g:commentchar = '//'
 inoremap <buffer> [db logger.debug();F(a
 inoremap <buffer> [in logger.info();F(a
 inoremap <buffer> [er logger.error();F(a
