@@ -87,7 +87,7 @@ inoremap <buffer> /**   /**/O
 inoremap <buffer> ==    ===
 inoremap <buffer> !=    !==
 
-inoremap <buffer> ( :call Parenths()<cr>f(a
+"inoremap <buffer> ( :call Parenths()<cr>f(a
 inoremap <buffer> <D-tab>   f)a
 
 inoremap <buffer>     }oo
