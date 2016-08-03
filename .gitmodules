@@ -30,7 +30,7 @@
 	url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/vim-git"]
 	path = bundle/vim-git
-	url = git@github.com:tpope/vim-git.git
+	url = git://github.com/tpope/vim-git.git
 [submodule "bundle/vim-easy-align.git"]
 	path = bundle/vim-easy-align.git
-	url = git@github.com:junegunn/vim-easy-align.git
+	url = git://github.com/junegunn/vim-easy-align.git
