@@ -24,6 +24,7 @@ if has("gui_running")
 endif
 
 call plug#begin()
+Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/vim-easy-align'
 Plug 'nvie/vim-flake8'
 Plug 'Shougo/unite.vim'
@@ -31,8 +32,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
-
-xmap <enter> <Plug>(EasyAlign)
 
 set expandtab
 
@@ -46,10 +45,6 @@ function! InsertTabWrapper()
           return "\<c-n>" 
       endif 
 endfunction 
-
-"inoremap <tab>	<c-r>=InsertTabWrapper()<cr>
-"noremap! [<tab>	<tab>
-"noremap! <C-Tab>	<tab>
 
 if &diff
     noremap <C-c> :qa<cr>
@@ -93,13 +88,13 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 
 autocmd!
 
-map [g :Gstatus<cr>
-map [v :Gdiff<cr>
+map <leader>g :Gstatus<cr>
+map <leader>v :Gdiff<cr>
 
 " Buffer exploring
-map		[a		<leader>be
-map		[j		<leader>bs
-map		[J		<leader>bv
+map		<leader>a		<leader>be
+map		<leader>j		<leader>bs
+map		<leader>J		<leader>bv
 
 "Emulate how "Y" _should_ work
 noremap Y y$
@@ -116,21 +111,14 @@ map	<c-k>	<c-w>k
 map	<c-j>	<c-w>j
 map <c-n>	:cn<cr>
 
-"highlight	Type		ctermfg=blue	guifg=Blue
-"highlight	Constant	ctermfg=blue	guifg=Blue
-"highlight	Statement	ctermfg=blue	guifg=Blue
-"highlight	Identifier	ctermfg=blue	guifg=Blue	
-"highlight	Comment		ctermfg=lightgray 	guifg=#838183
-"highlight	Type		ctermfg=blue	guifg=Blue
-
 syntax enable
 
 set background=light
-"let g:solarized_termtrans=1
-"let g:solarized_termcolors=256
-"let g:solarized_visibility="high"
-"let g:solarized_contrast="high"
-"colorscheme solarized
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+colorscheme solarized
 
 inoremap <buffer> <S-Tab> <C-d>
 
