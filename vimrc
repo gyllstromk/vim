@@ -17,13 +17,22 @@ set cursorcolumn
 
 set pastetoggle=<F2>
 
-call pathogen#infect()
-
 "set rnu
 
 if has("gui_running")
 	set guioptions=egmrt  " disable toolbar in macvim
 endif
+
+call plug#begin()
+Plug 'junegunn/vim-easy-align'
+Plug 'nvie/vim-flake8'
+Plug 'Shougo/unite.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+call plug#end()
+
+xmap <enter> <Plug>(EasyAlign)
 
 set expandtab
 
@@ -117,11 +126,11 @@ map <c-n>	:cn<cr>
 syntax enable
 
 set background=light
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 "let g:solarized_termcolors=256
 "let g:solarized_visibility="high"
 "let g:solarized_contrast="high"
-colorscheme solarized
+"colorscheme solarized
 
 inoremap <buffer> <S-Tab> <C-d>
 
