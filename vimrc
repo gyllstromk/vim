@@ -27,9 +27,9 @@ call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/vim-easy-align'
 Plug 'nvie/vim-flake8'
+Plug 'phleet/vim-mercenary'
 Plug 'Shougo/unite.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
@@ -88,8 +88,24 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 
 autocmd!
 
-map <leader>g :Gstatus<cr>
-map <leader>v :Gdiff<cr>
+function! VCSStatus()
+  if exists(":Gstatus")
+    Gstatus
+  elseif exists(":HGStatus")
+    HGStatus
+  endif
+endfunction
+
+function! VCSDiff()
+  if exists(":Gdiff")
+    Gdiff
+  elseif exists(":HGdiff")
+    HGdiff
+  endif
+endfunction
+
+map <leader>g :call VCSStatus()<cr>
+map <leader>v :call VCSDiff()<cr>
 
 " Buffer exploring
 map		<leader>a		<leader>be
