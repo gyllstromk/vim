@@ -27,6 +27,7 @@ let g:ctrlp_max_files=0
 
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
