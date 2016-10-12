@@ -145,3 +145,5 @@ let @t = "V/===x/>>>dd/<<<"
 
 xmap <Enter> <Plug>(EasyAlign)
 nmap <Enter> <Plug>(EasyAlign)
+
+source ~/.vim/local.vimrc
