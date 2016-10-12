@@ -30,9 +30,11 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
+Plug 'ludovicchabant/vim-lawrencium'
 Plug 'nvie/vim-flake8'
 Plug 'phleet/vim-mercenary'
 Plug 'Shougo/vimproc.vim'
+Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/unite.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'pinned': '1' }
@@ -168,3 +170,11 @@ let g:ycm_server_log_level = 'debug'
 nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1

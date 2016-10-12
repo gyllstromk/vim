@@ -59,7 +59,6 @@ endfunction
 
 
 source ~/.vim/cstyle.vim
-source ~/.vim/comment.vim
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
