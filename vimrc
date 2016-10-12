@@ -156,7 +156,9 @@ let @t = "V/===x/>>>dd/<<<"
 xmap <Enter> <Plug>(EasyAlign)
 nmap <Enter> <Plug>(EasyAlign)
 
-source ~/.vim/local.vimrc
+if filereadable(glob("~/.vim/local.vimrc")) 
+    source ~/.vim/local.vimrc
+endif
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
