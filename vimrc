@@ -23,15 +23,24 @@ if has("gui_running")
 	set guioptions=egmrt  " disable toolbar in macvim
 endif
 
+let g:ctrlp_max_files=0
+
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'nvie/vim-flake8'
 Plug 'phleet/vim-mercenary'
+Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/unite.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'pinned': '1' }
+Plug 'wincent/command-t'
+Plug 'wincent/vim-clipper'
 call plug#end()
+
+let g:CommandTFileScanner='watchman'
 
 set expandtab
 
@@ -147,3 +156,15 @@ xmap <Enter> <Plug>(EasyAlign)
 nmap <Enter> <Plug>(EasyAlign)
 
 source ~/.vim/local.vimrc
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_error_symbol = 'x'
+let g:ycm_warning_symbol = '!'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
