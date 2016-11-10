@@ -53,9 +53,6 @@ vim.command('normal %dG' % row)
 EOF
 endfunction
 
-let g:commentchar = '#'
-source ~/.vim/comment.vim
-
 map <buffer> { :call EndOfBlock(0, 0)<cr>
 map <buffer> } :call EndOfBlock(1, 0)<cr>
 vmap <buffer> { :call EndOfBlock(0, 1)<cr>
