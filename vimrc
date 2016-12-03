@@ -151,8 +151,10 @@ inoremap <buffer> <S-Tab> <C-d>
 
 au BufRead,BufNewFile *.txt setfiletype text
 
-let @o = "dd/===V/>>>x/<<<"
-let @t = "V/===x/>>>dd/<<<"
+set mouse=a
+
+let @o = "dd/^=====V/>>>x/<<<"
+let @t = "V/^=====x/>>>dd/<<<"
 
 xmap <Enter> <Plug>(EasyAlign)
 nmap <Enter> <Plug>(EasyAlign)
