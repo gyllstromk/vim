@@ -9,8 +9,8 @@ syn region myFold start="{" end="}" transparent fold
 "set foldnestmax=1
 "set foldlevel=0
 
-map	[h		:AS<cr>
-map	[H		:A<cr>
+map	<leader>h		:AS<cr>
+map	<leader>H		:A<cr>
 
 inoremap	[try	try {o} catch O
 

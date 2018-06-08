@@ -1,12 +1,11 @@
-source ~/.vim/cst.vim
-set foldmethod=syntax
-set foldenable
-set foldnestmax=1
+source ~/.vim/cstyle.vim
+
+"set foldmethod=syntax
+"set foldenable
+"set foldnestmax=1
 "syn region foldBraces start=/.*{.*/ end=/.*}.*/ transparent fold keepend extend
 "set foldnestmax=2
 
-map	[h		:AS<cr>
-map	[H		:A<cr>
 
 function! ClassDecCpp()
 python << EOF
@@ -28,17 +27,18 @@ endfunction!
 "return value
 "endfunction!
 
-inoremap [ct	:call ConstRef()<cr>i	
+inoremap <leader>ct	:call ConstRef()<cr>i	
 
-inoremap [cl	:call ClassDecCpp()<cr>i
-map! [in	#include <>i
-imap [main	int main(int argc, char *argv[]) {{
-map! [pr	std::cout << << std::endl;3F<a 
-map! [en	std::endl;
-map  [c		:call Compile()<cr>
-"map  [r		:!./%<<cr>
-map  [r		:!make run<cr>
+inoremap <leader>cl	:call ClassDecCpp()<cr>i
+map! <leader>in	#include <>i
+imap <leader>main	int main(int argc, char *argv[]) {{
+map! <leader>pr	LOG(INFO) << ;i
+map! <leader>er	LOG(ERROR) << ;i
+map! <leader>en	std::endl;
+map  <leader>c		:call Compile()<cr>
+"map  <leader>r		:!./%<<cr>
+map  <leader>r		:!make run<cr>
 ab	st		std::string
-map! [set	std::set<  > 2F a
-map! [vec	std::vector<  > 2F a
-map! [foe	BOOST_FOREACH () {o}kf(a
+map! <leader>set	std::set<  > 2F a
+map! <leader>vec	std::vector<  > 2F a
+map! <leader>foe	BOOST_FOREACH () {o}kf(a
