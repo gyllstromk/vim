@@ -69,7 +69,7 @@ inoremap <buffer> [db logger.debug();F(a
 inoremap <buffer> [in logger.info();F(a
 inoremap <buffer> [er logger.error();F(a
 inoremap <buffer> [wa logger.warn();F(a
-inoremap <buffer> [pr console.log();F(a
+"inoremap <buffer> [pr console.log();F(a
 "inoremap <buffer> [pr :call Log()<cr>f(a
 
 inoremap <buffer> [fu function () {}k$F(a

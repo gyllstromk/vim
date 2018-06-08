@@ -1,6 +1,4 @@
 source ~/.vim/cstyle.vim
-let g:commentchar = '//'
-source ~/.vim/comment.vim
 
 let g:SuperTabDefaultCompletionType = 'context'
 
