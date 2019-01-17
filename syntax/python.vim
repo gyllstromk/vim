@@ -109,7 +109,7 @@ function! EchoVariable(i)
 endfunction
 
 map! <buffer> [cl	<c-r>=InsertClassHeader()<cr>
-map <buffer>	 [r		:! python %<cr>
+map <buffer>	 [r		:! python3.6 %<cr>
 "map! <buffer> [pr	print()i
 map! <buffer> [pr	print 
 map! <buffer> [fr    from  import2F a
