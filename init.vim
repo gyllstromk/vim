@@ -39,7 +39,6 @@ filetype plugin indent on    " required
 
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'easymotion/vim-easymotion'
@@ -50,8 +49,13 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ludovicchabant/vim-lawrencium'
 Plug 'mileszs/ack.vim'
 Plug 'nvie/vim-flake8'
+Plug 'pdavydov108/vim-lsp-cquery'
 Plug 'Shougo/vimproc.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'Shougo/unite.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -72,25 +76,39 @@ let g:deoplete#enable_at_startup = 1
 
 map <leader>t :FZF<cr>
 
-
-let g:LanguageClient_serverCommands = {
-    \ 'php': ['hh', 'lsp'],
-    \ }
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <c-]> :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <c-\> :call LanguageClient_textDocument_references()<CR>
-"nnoremap <silent> <C-f> :call LanguageClient_textDocument_formatting()<CR>
-"nnoremap!  :LanguageClientStop<cr>:LanguageClientStart<CR>
-
 " Use vundle to install fzf. Probably need to install binary manually"
 " C-p search/open for files in sub-directory "
 nnoremap <C-P> :call fzf#run({'source': '~/bin/fb-files sub', 'sink': 'e'})<CR>
 " C-l search/open for files in the full repository index:"
 nnoremap <C-L> :call fzf#run({'source': '~/bin/fb-files', 'sink': 'e'})<CR>
+
+" Key bindings for normal mode
+nnoremap K :LspHover<CR>
+let g:lsp_preview_keep_focus = 0
+nnoremap <c-y> :LspDocumentDiagnostics<Cr>
+nnoremap <silent> <c-]> :LspDefinition<CR>
+nnoremap <silent> <c-\> :LspReferences<CR>
+"nnoremap <silent> <c-\> :call LanguageClient_textDocument_references()<CR>
+"nnoremap <silent> <C-f> :call LanguageClient_textDocument_formatting()<CR>
+"nnoremap!  :LanguageClientStop<cr>:LanguageClientStart<CR>
+
+" Autocomplete
+let g:lsp_async_completion = 1
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Hover (type info) settings
+let &previewheight = 5
+
+" Diagnostics
+let g:lsp_signs_enabled = 1         " Show errors in sidebar
+let g:lsp_diagnostics_echo_cursor = 1 " Enable echo under cursor when in normal mode
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '‼'}
+let g:lsp_log_file = expand('/tmp/vim-lsp.log')
 
 
 let g:CommandTFileScanner='watchman'
