@@ -78,8 +78,8 @@ return require("packer").startup {
 
     -- "windwp/nvim-autopairs",
 
-    -- "neovim/nvim-lspconfig",
-    -- "jose-elias-alvarez/null-ls.nvim",
+    "neovim/nvim-lspconfig",
+    "jose-elias-alvarez/null-ls.nvim",
     -- "jose-elias-alvarez/nvim-lsp-ts-utils",
     -- "simrat39/rust-tools.nvim",
 
@@ -123,5 +123,6 @@ return require("packer").startup {
     -- 'jose-elias-alvarez/null-ls.nvim',
     -- 'nvim-treesitter/nvim-treesitter',
     -- 'nvim-telescope/telescope.nvim',
+{"/usr/share/fb-editor-support/nvim", as = "meta.nvim" }
   }
 }

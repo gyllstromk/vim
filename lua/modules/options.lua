@@ -61,7 +61,6 @@ o.listchars      = {
 o.mouse          = "nvi" -- enable mouse support in normal, insert, and visual mode
 o.shortmess      = "csa" -- disable some stuff on shortmess
 o.signcolumn     = "yes" -- enable sign column all the time 4 column
---o.shell          = "/usr/bin/bash" -- use bash instead of zsh
 o.colorcolumn    = { "80" } -- 80 chars color column
 o.laststatus     = 3 -- always enable statusline
 o.pumheight      = 10 -- limit completion items

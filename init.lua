@@ -12,4 +12,5 @@ vim.g.maplocalleader = "["
 vim.cmd [[
 runtime! lua/modules/options.lua
 runtime! lua/modules/mappings.lua
+runtime! init_after.lua
 ]]
