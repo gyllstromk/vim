@@ -96,7 +96,6 @@ return require("packer").startup {
 
     -- "vim-test/vim-test",
 
-    "norcalli/nvim-colorizer.lua",
     -- "bronson/vim-trailing-whitespace",
     -- "ConradIrwin/vim-bracketed-paste",
     -- "easymotion/vim-easymotion",
