@@ -6,7 +6,7 @@ function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map("n", "<leader>a", "<leader>be")
+map("n", "<leader>a", ":Telescope buffers initial_mode=normal<cr>")
 map("n", "<leader>j", "<leader>bs")
 map("n", "<leader>J", "<leader>bv")
 map("n", "<c-l>", "<c-w>l")

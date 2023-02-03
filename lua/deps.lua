@@ -13,7 +13,7 @@ return require("packer").startup {
 
     -- "feline-nvim/feline.nvim",
 
-    -- "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
     -- "nvim-treesitter/nvim-treesitter-textobjects",
     -- "windwp/nvim-ts-autotag",
 
@@ -37,8 +37,11 @@ return require("packer").startup {
     },
     -- "JoosepAlviste/nvim-ts-context-commentstring",
 
-    -- "nvim-telescope/telescope.nvim",
-    -- "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope.nvim",
+    {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    },
     -- "nvim-lua/popup.nvim",
     -- "kyazdani42/nvim-web-devicons",
     -- "tami5/sqlite.lua",
