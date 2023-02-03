@@ -39,7 +39,7 @@ return require("packer").startup {
 
     {
       'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
+      requires = { {'nvim-lua/plenary.nvim'} },
     },
     -- "nvim-lua/popup.nvim",
     -- "kyazdani42/nvim-web-devicons",
