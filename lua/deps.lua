@@ -37,7 +37,6 @@ return require("packer").startup {
     },
     -- "JoosepAlviste/nvim-ts-context-commentstring",
 
-    "nvim-telescope/telescope.nvim",
     {
       'nvim-telescope/telescope.nvim',
       requires = { {'nvim-lua/plenary.nvim'} }
