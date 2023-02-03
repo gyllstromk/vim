@@ -17,7 +17,23 @@ return require("packer").startup {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "windwp/nvim-ts-autotag",
 
-    "numToStr/Comment.nvim",
+    'numToStr/Comment.nvim',
+    {
+      require('Comment').setup({
+        toggler = {
+          line = '[cn',
+          block = 'gbc',
+        },
+        opleader = {
+          line = '[cn',
+          -- block = '[',
+        },
+        mappings = {
+          basic = true,
+          extra = true,
+        },
+      }),
+    },
     "JoosepAlviste/nvim-ts-context-commentstring",
 
     "nvim-telescope/telescope.nvim",
