@@ -78,5 +78,5 @@ o.diffopt:append { "algorithm:histogram", "indent-heuristic" }
 o.background = "light"
 
 vim.cmd [[
-colorscheme solarized
+colorscheme gruvbox
 ]]

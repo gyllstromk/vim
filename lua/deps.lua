@@ -62,6 +62,7 @@ return require("packer").startup {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-vsnip",
     "hrsh7th/vim-vsnip",
+    "ellisonleao/gruvbox.nvim",
 
     -- requires plenary.nvim
     "lewis6991/gitsigns.nvim",
