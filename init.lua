@@ -1,4 +1,4 @@
---require("impatient").enable_profile()
+local packer_bootstrap = require('bootstrap')
 require("deps")
 
 -- enable filetype.lua
