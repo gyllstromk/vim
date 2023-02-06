@@ -1,25 +1,17 @@
 local opts = { noremap=true, silent=true }
 
 
-function map(mode, lhs, rhs, opts)
-    local options = {}
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", opts)
+vim.keymap.set("n", "<leader>j", "<leader>bs", opts)
+vim.keymap.set("n", "<leader>J", "<leader>bv", opts)
+vim.keymap.set("n", "<c-l>", "<c-w>l", opts)
+vim.keymap.set("n", "<c-h>", "<c-w>h", opts)
+vim.keymap.set("n", "<c-k>", "<c-w>k", opts)
+vim.keymap.set("n", "<c-j>", "<c-w>j", opts)
 
-map("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>")
-map("n", "<leader>j", "<leader>bs")
-map("n", "<leader>J", "<leader>bv")
-map("n", "<c-l>", "<c-w>l")
-map("n", "<c-h>", "<c-w>h")
-map("n", "<c-k>", "<c-w>k")
-map("n", "<c-j>", "<c-w>j")
-
-map("n", "<leader>g", ":Hgstatus<cr>")
-map("n", "<leader>v", ":Hgvdiff<cr>")
-map("n", "<leader>l", ":HgBlame<cr>")
+vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)
+vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
+vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", opts)
 
 local actions = require('telescope.actions')
 require('telescope').setup {
