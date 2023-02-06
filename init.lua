@@ -14,15 +14,3 @@ runtime! lua/modules/options.lua
 runtime! lua/modules/mappings.lua
 runtime! init_after.lua
 ]]
-
-local actions = require('telescope.actions')
-require('telescope').setup {
-  defaults = {
-      mappings = {
-          i = {
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-k>"] = actions.move_selection_previous,
-          },
-      },
-  },
-}

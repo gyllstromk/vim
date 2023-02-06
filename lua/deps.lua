@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require("packer").startup {
+local pkg = require("packer").startup {
   {
     { "wbthomason/packer.nvim", opt = true } ,
     --"gpanders/editorconfig.nvim" ,
@@ -39,9 +39,18 @@ return require("packer").startup {
 
     {
       'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} },
+      requires = {
+        { 'nvim-lua/plenary.nvim' },
+        --"nvim-lua/popup.nvim",
+      },
     },
-    -- "nvim-lua/popup.nvim",
+
+    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+    'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+    'L3MON4D3/LuaSnip', -- Snippets plugin
+
     -- "kyazdani42/nvim-web-devicons",
     -- "tami5/sqlite.lua",
     -- { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
@@ -62,7 +71,7 @@ return require("packer").startup {
     -- { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" },
     -- "MunifTanjim/nui.nvim",
 
-    "hrsh7th/nvim-cmp",
+    --"hrsh7th/nvim-cmp",
     -- "hrsh7th/cmp-nvim-lsp",
     -- "hrsh7th/cmp-path",
     -- "hrsh7th/cmp-buffer",
@@ -78,7 +87,6 @@ return require("packer").startup {
 
     -- "windwp/nvim-autopairs",
 
-    "neovim/nvim-lspconfig",
     "jose-elias-alvarez/null-ls.nvim",
     -- "jose-elias-alvarez/nvim-lsp-ts-utils",
     -- "simrat39/rust-tools.nvim",
@@ -119,10 +127,34 @@ return require("packer").startup {
 --Plug "Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
     -- 'Shougo/echodoc.vim',
-    -- 'neovim/nvim-lspconfig',
     -- 'jose-elias-alvarez/null-ls.nvim',
     -- 'nvim-treesitter/nvim-treesitter',
     -- 'nvim-telescope/telescope.nvim',
 {"/usr/share/fb-editor-support/nvim", as = "meta.nvim" }
   }
 }
+
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local lspconfig = require('lspconfig')
+
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = { 'pyright' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    -- on_attach = my_custom_on_attach,
+    capabilities = capabilities,
+  }
+end
+
+return pkg
