@@ -1,16 +1,15 @@
 local o = vim.opt
 
--- o.number         = true -- enable line number
+o.number         = false -- enable line number
 o.relativenumber = true -- enable relative line number
---o.nohlsearch = true
-o.incsearch = true
+o.incsearch      = true
 o.undofile       = true -- persistent undo
 o.backup         = false -- disable backup
 o.cursorline     = true -- enable cursor line
 o.expandtab      = true -- use spaces instead of tabs
 o.autowrite      = true -- auto write buffer when it's not focused
 o.hidden         = true -- keep hidden buffers
-o.hlsearch       = true -- highlight matching search
+o.hlsearch       = false -- highlight matching search
 o.ignorecase     = true -- case insensitive on search..
 o.smartcase      = true -- ..unless there's a capital
 o.equalalways    = true -- make window size always equal
