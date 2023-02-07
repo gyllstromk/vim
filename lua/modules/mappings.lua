@@ -9,6 +9,9 @@ vim.keymap.set("n", "<c-h>", "<c-w>h", opts)
 vim.keymap.set("n", "<c-k>", "<c-w>k", opts)
 vim.keymap.set("n", "<c-j>", "<c-w>j", opts)
 
+-- toggle numbers for copy/paste
+vim.keymap.set("n", "<F7>", ':exec &rnu? "se nornu!" : "se rnu!"<cr>')
+
 vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)
 vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
 vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", opts)
