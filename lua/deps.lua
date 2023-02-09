@@ -53,7 +53,7 @@ local pkg = require("packer").startup {
 
     -- "kyazdani42/nvim-web-devicons",
     -- "tami5/sqlite.lua",
-    -- { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     -- "nvim-telescope/telescope-ui-select.nvim",
 
     -- requires plenary.nvim
@@ -156,5 +156,7 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+require('telescope').load_extension('fzf')
 
 return pkg
