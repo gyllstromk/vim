@@ -73,7 +73,7 @@ o.timeoutlen     = 400 -- faster timeout wait time
 o.updatetime     = 1000 -- set faster update time
 o.joinspaces     = false
 o.diffopt:append { "algorithm:histogram", "indent-heuristic" }
-o.background = "light"
+o.background = "dark"
 
 vim.cmd [[
 colorscheme gruvbox

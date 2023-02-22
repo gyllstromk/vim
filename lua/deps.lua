@@ -4,8 +4,9 @@ local pkg = require("packer").startup {
   {
     { "wbthomason/packer.nvim", opt = true } ,
     --"gpanders/editorconfig.nvim" ,
-    --"AndrewRadev/splitjoin.vim" ,
-    --"machakann/vim-sandwich" ,
+    "AckslD/nvim-trevJ.lua",
+    "wellle/context.vim",
+    "machakann/vim-sandwich" ,
     -- "tweekmonster/startuptime.vim" ,
     -- "elianiva/gitgud.nvim" ,
 
@@ -35,7 +36,6 @@ local pkg = require("packer").startup {
           })
       end,
     },
-    -- "JoosepAlviste/nvim-ts-context-commentstring",
 
     {
       'nvim-telescope/telescope.nvim',
@@ -51,9 +51,7 @@ local pkg = require("packer").startup {
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     'L3MON4D3/LuaSnip', -- Snippets plugin
 
-    -- "kyazdani42/nvim-web-devicons",
-    -- "tami5/sqlite.lua",
-    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    --{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     -- "nvim-telescope/telescope-ui-select.nvim",
 
     -- requires plenary.nvim
@@ -71,8 +69,6 @@ local pkg = require("packer").startup {
     -- { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" },
     -- "MunifTanjim/nui.nvim",
 
-    --"hrsh7th/nvim-cmp",
-    -- "hrsh7th/cmp-nvim-lsp",
     -- "hrsh7th/cmp-path",
     -- "hrsh7th/cmp-buffer",
     -- "hrsh7th/cmp-vsnip",
@@ -107,7 +103,6 @@ local pkg = require("packer").startup {
     -- "ConradIrwin/vim-bracketed-paste",
     -- "easymotion/vim-easymotion",
     -- "hhvm/vim-hack",
-    "jlanzarotta/bufexplorer",
     -- "junegunn/vim-easy-align",
     "ludovicchabant/vim-lawrencium",
     -- "mileszs/ack.vim",
@@ -121,17 +116,18 @@ local pkg = require("packer").startup {
     -- "Shougo/unite.vim",
     --"tpope/vim-abolish",
     "tpope/vim-fugitive",
-    "vim-scripts/a.vim",
-    -- "junegunn/fzf",
-    -- "Shougo/denite.nvim",
---Plug "Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    "levouh/tint.nvim",
 
-    -- 'Shougo/echodoc.vim',
-    -- 'jose-elias-alvarez/null-ls.nvim',
-    -- 'nvim-treesitter/nvim-treesitter',
-    -- 'nvim-telescope/telescope.nvim',
-{"/usr/share/fb-editor-support/nvim", as = "meta.nvim" }
-  }
+      -- "junegunn/fzf",
+      -- "Shougo/denite.nvim",
+  --Plug "Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+      -- 'Shougo/echodoc.vim',
+      -- 'jose-elias-alvarez/null-ls.nvim',
+      -- 'nvim-treesitter/nvim-treesitter',
+      -- 'nvim-telescope/telescope.nvim',
+  {"/usr/share/fb-editor-support/nvim", as = "meta.nvim" }
+    }
 }
 
 local lsp_flags = {
@@ -157,6 +153,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require('telescope').load_extension('fzf')
+require('tint').setup()
+
+--require('telescope').load_extension('fzf')
 
 return pkg
