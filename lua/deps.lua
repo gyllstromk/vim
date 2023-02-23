@@ -117,6 +117,7 @@ local pkg = require("packer").startup {
     --"tpope/vim-abolish",
     "tpope/vim-fugitive",
     "levouh/tint.nvim",
+    "tmhedberg/SimpylFold",
 
       -- "junegunn/fzf",
       -- "Shougo/denite.nvim",
@@ -126,7 +127,7 @@ local pkg = require("packer").startup {
       -- 'jose-elias-alvarez/null-ls.nvim',
       -- 'nvim-treesitter/nvim-treesitter',
       -- 'nvim-telescope/telescope.nvim',
-  {"/usr/share/fb-editor-support/nvim", as = "meta.nvim" }
+  {"/usr/share/fb-editor-support/nvim", as = "meta.nvim" },
     }
 }
 
@@ -171,7 +172,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright' }
+local servers = { }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
