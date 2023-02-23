@@ -36,6 +36,7 @@ endfunction
 map! <buffer> <leader>cl	<c-r>=InsertClassHeader()<cr>
 map <buffer>	 <leader>r		:! python3 %<cr>
 map! <buffer> <leader>pr	print()i
+map! <buffer> <leader>wa logging.warning()i
 "map! <buffer> [pr	print 
 map! <buffer> <leader>fr    from  import2F a
 map! <buffer> <leader>im	import 
