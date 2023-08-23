@@ -1,7 +1,21 @@
 local opts = { noremap=true, silent=true }
 
 
+local builtin = require("telescope.builtin")
+local utils = require("telescope.utils")
 vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", opts)
+
+vim.keymap.set(
+  "n",
+  "<leader>E",
+  function()
+    builtin.find_files({
+      cwd = utils.buffer_dir(),
+      initial_mode="normal",
+    })
+  end
+)
+
 vim.keymap.set("n", "<leader>j", "<leader>bs", opts)
 vim.keymap.set("n", "<leader>J", "<leader>bv", opts)
 vim.keymap.set("n", "<c-l>", "<c-w>l", opts)
