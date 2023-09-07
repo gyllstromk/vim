@@ -30,12 +30,15 @@ vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)
 vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
 vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", opts)
 
+vim.keymap.set("n", "<leader>o", "wbityping.Optional[ea]", opts)
+
 local actions = require('telescope.actions')
 telescope_insert_mode = function(prompt_bufnr)
   vim.schedule(function()
     vim.cmd [[startinsert]]
   end)
 end
+
 require('telescope').setup {
   defaults = {
       mappings = {

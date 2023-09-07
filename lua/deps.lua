@@ -6,7 +6,7 @@ local pkg = require("packer").startup {
     --"gpanders/editorconfig.nvim" ,
     "AckslD/nvim-trevJ.lua",
     "wellle/context.vim",
-    "machakann/vim-sandwich" ,
+    -- "machakann/vim-sandwich" ,
     -- "tweekmonster/startuptime.vim" ,
     -- "elianiva/gitgud.nvim" ,
 
@@ -45,11 +45,24 @@ local pkg = require("packer").startup {
       },
     },
 
-    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
-    'hrsh7th/nvim-cmp', -- Autocompletion plugin
-    'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
-    'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     'L3MON4D3/LuaSnip', -- Snippets plugin
+    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
+    "hrsh7th/cmp-buffer",
+    'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    {
+      "saadparwaiz1/cmp_luasnip",
+      -- after = "nvim-cmp",
+    },
+    {
+      "rafamadriz/friendly-snippets",
+      after = "LuaSnip",
+    },
+
+    {
+      'kkoomen/vim-doge',
+      run = ':call doge#install()'
+    },
 
     --{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
     -- "nvim-telescope/telescope-ui-select.nvim",
@@ -70,7 +83,6 @@ local pkg = require("packer").startup {
     -- "MunifTanjim/nui.nvim",
 
     -- "hrsh7th/cmp-path",
-    -- "hrsh7th/cmp-buffer",
     -- "hrsh7th/cmp-vsnip",
     -- "hrsh7th/vim-vsnip",
     "ellisonleao/gruvbox.nvim",
@@ -130,7 +142,7 @@ local pkg = require("packer").startup {
     --"tpope/vim-abolish",
     "tpope/vim-fugitive",
     "levouh/tint.nvim",
-    "tmhedberg/SimpylFold",
+    -- "tmhedberg/SimpylFold",
 
       -- "junegunn/fzf",
       -- "Shougo/denite.nvim",
