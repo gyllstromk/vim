@@ -1,12 +1,12 @@
 local packer_bootstrap = require('bootstrap')
+
+vim.g.mapleader = "["
+vim.g.maplocalleader = "["
+
 require("deps")
 
 -- enable filetype.lua
 vim.g.do_filetype_lua = 1
-
--- map leader key to space
-vim.g.mapleader = "["
-vim.g.maplocalleader = "["
 
 -- order matters
 vim.cmd [[

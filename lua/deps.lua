@@ -1,8 +1,5 @@
-vim.cmd [[packadd packer.nvim]]
-
-local pkg = require("packer").startup {
+local pkg = require("lazy").setup {
   {
-    { "wbthomason/packer.nvim", opt = true } ,
     --"gpanders/editorconfig.nvim" ,
     "AckslD/nvim-trevJ.lua",
     "wellle/context.vim",
@@ -39,7 +36,7 @@ local pkg = require("packer").startup {
 
     {
       'nvim-telescope/telescope.nvim',
-      requires = {
+      dependencies = {
         { 'nvim-lua/plenary.nvim' },
         --"nvim-lua/popup.nvim",
       },
@@ -52,25 +49,24 @@ local pkg = require("packer").startup {
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
     {
       "saadparwaiz1/cmp_luasnip",
-      -- after = "nvim-cmp",
     },
     {
       "rafamadriz/friendly-snippets",
-      after = "LuaSnip",
+      dependencies = {"LuaSnip"},
     },
 
     {
       'kkoomen/vim-doge',
-      run = ':call doge#install()'
+      build = ':call doge#install()'
     },
 
-    --{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    --{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     -- "nvim-telescope/telescope-ui-select.nvim",
 
-    -- requires plenary.nvim
+    -- dependencies plenary.nvim
     -- {
     --   "ruifm/gitlinker.nvim",
-    --   requires={"nvim-lua/plenary.nvim"},
+    --   dependencies={"nvim-lua/plenary.nvim"},
     -- }
 
     -- "https://gitlab.com/yorickpeterse/nvim-pqf",
@@ -87,15 +83,15 @@ local pkg = require("packer").startup {
     -- "hrsh7th/vim-vsnip",
     "ellisonleao/gruvbox.nvim",
 
-    -- requires plenary.nvim
+    -- dependencies plenary.nvim
     -- "lewis6991/gitsigns.nvim",
 
-    -- requires kyazdani42/nvim-web-devicons
+    -- dependencies kyazdani42/nvim-web-devicons
     -- "akinsho/nvim-bufferline.lua",
 
     {
       "windwp/nvim-autopairs",
-      after = "nvim-cmp",
+      dependencies = {"nvim-cmp"},
       config = function()
         require("nvim-autopairs").setup({})
 
@@ -152,7 +148,7 @@ local pkg = require("packer").startup {
       -- 'jose-elias-alvarez/null-ls.nvim',
       -- 'nvim-treesitter/nvim-treesitter',
       -- 'nvim-telescope/telescope.nvim',
-  {"/usr/share/fb-editor-support/nvim", as = "meta.nvim" },
+      { dir = "/usr/share/fb-editor-support/nvim", name = "meta.nvim" }
     }
 }
 
