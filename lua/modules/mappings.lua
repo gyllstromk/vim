@@ -28,6 +28,7 @@ vim.keymap.set("n", "<F7>", ':exec &rnu? "se nornu!" : "se rnu!"<cr>')
 
 vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)
 vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
+vim.keymap.set("n", "<leader>V", ":Hgvdiff .^<cr>", opts)
 vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", opts)
 
 vim.keymap.set("n", "<leader>o", "wbityping.Optional[ea]", opts)
