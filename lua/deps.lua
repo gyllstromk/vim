@@ -49,10 +49,16 @@ local pkg = require("lazy").setup {
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
     {
       "saadparwaiz1/cmp_luasnip",
+      -- after = "nvim-cmp",
     },
     {
       "rafamadriz/friendly-snippets",
-      dependencies = {"LuaSnip"},
+      after = "LuaSnip",
+    },
+
+    {
+      'kkoomen/vim-doge',
+      run = ':call doge#install()'
     },
 
     {
