@@ -42,6 +42,7 @@ o.fillchars      = {
   fold = " ",
   diff = " ",
 } -- make vertical split sign better
+o.foldenable = false
 -- o.foldmethod     = "expr"
 -- o.foldopen       = {
 --   "percent",
