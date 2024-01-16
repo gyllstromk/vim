@@ -12,5 +12,9 @@ vim.g.do_filetype_lua = 1
 vim.cmd [[
 runtime! lua/modules/options.lua
 runtime! lua/modules/mappings.lua
-runtime! init_after.lua
 ]]
+
+local hostname = io.popen("hostname"):read('*a')
+if hostname:match("%.facebook%.com$") then
+    require('init_after.lua')
+end
