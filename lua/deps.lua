@@ -56,16 +56,6 @@ local pkg = require("lazy").setup {
       after = "LuaSnip",
     },
 
-    {
-      'kkoomen/vim-doge',
-      run = ':call doge#install()'
-    },
-
-    {
-      'kkoomen/vim-doge',
-      build = ':call doge#install()'
-    },
-
     --{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     -- "nvim-telescope/telescope-ui-select.nvim",
 
