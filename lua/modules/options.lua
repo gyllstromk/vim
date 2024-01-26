@@ -35,6 +35,7 @@ o.completeopt    = {
   "noselect",
   "noinsert",
 } -- better completion
+o.formatexpr       = "" -- seems to be needed for gq to work
 o.encoding       = "UTF-8" -- set encoding
 o.fillchars      = {
   vert = "│",
