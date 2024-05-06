@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
 vim.keymap.set("n", "<leader>V", ":Hgvdiff .^<cr>", opts)
 vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", opts)
 
-vim.keymap.set("n", "<leader>o", "wbityping.Optional[ea]", opts)
+vim.keymap.set("n", "<leader>o", "wbiOptional[ea]", opts)
 
 local actions = require('telescope.actions')
 telescope_insert_mode = function(prompt_bufnr)
