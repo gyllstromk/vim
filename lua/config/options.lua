@@ -28,3 +28,5 @@ opt.wildmode = "full"
 -- gylls
 opt.hlsearch       = false -- highlight matching search
 opt.foldenable = false
+
+vim.g.lazyvim_python_lsp = "basedpyright"

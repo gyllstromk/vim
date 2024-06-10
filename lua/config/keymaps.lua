@@ -11,9 +11,9 @@ cmd("unmap H")
 cmd("unmap L")
 cmd("unmap n")  -- for some reason the new config always defaults n to next (top down) instead of n (search direction)
 cmd("unmap N")
-cmd("unmap <leader>l")
+--cmd("unmap <leader>l")
 
-cmd("unmap <S-tab>")
+--cmd("unmap <S-tab>")
 -- endgylls
 
 -- map arrow keys to pane shifts.
@@ -34,12 +34,25 @@ cmd("command Q q")
 -- https://github.com/neovim/neovim/issues/20064
 vim.keymap.del({ "n", "i", "v" }, "<A-j>")
 vim.keymap.del({ "n", "i", "v" }, "<A-k>")
+vim.keymap.del({"n"}, "<leader>l")
+vim.keymap.set({"n"}, "<leader>l", ":HgBlame<cr>", opts)
 
 
 vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", opts)
+vim.keymap.set("n", "<leader>A", ":Telescope myles<cr>", opts)
 vim.keymap.set("n", "<leader>z", ":Telescope biggrep s<cr>", opts)
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
+
+vim.keymap.set(
+  "n",
+  "<C-]>",
+  function()
+    require("telescope.builtin").lsp_definitions({
+      reuse_win = true,
+    })
+  end
+)
 
 vim.keymap.set(
   "n",
@@ -53,3 +66,7 @@ vim.keymap.set(
 )
 
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+
+-- diff merge
+map("n", "@o", "dd/=======<cr>d/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
+map("n", "@t", "d/=======<cr>dd/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
