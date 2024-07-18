@@ -135,4 +135,17 @@ return {
       },
     },
   },
+  {
+    "nvim-treesitter",
+    config = function(plug, opts)
+      require'nvim-treesitter.configs'.setup {
+        -- overrides [a
+        textobjects = {
+          swap = {
+            enable = false,
+          }
+        }
+      }
+    end,
+  },
 }

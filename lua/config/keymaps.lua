@@ -38,7 +38,7 @@ vim.keymap.del({"n"}, "<leader>l")
 vim.keymap.set({"n"}, "<leader>l", ":HgBlame<cr>", opts)
 
 
-vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", opts)
+vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>A", ":Telescope myles<cr>", opts)
 vim.keymap.set("n", "<leader>H", ":Telescope hg diff<cr>", opts)
 vim.keymap.set("n", "<leader>z", ":Telescope biggrep s<cr>", opts)
