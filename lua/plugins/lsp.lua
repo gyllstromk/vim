@@ -31,7 +31,4 @@ return {
       },
     },
   },
-  { 
-    "meta.metamate",
-  },
 }

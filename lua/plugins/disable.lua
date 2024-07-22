@@ -16,6 +16,10 @@ return {
     enabled = false,
   },
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    enabled = false,
+  },
+  {
     "lualine.nvim",
     enabled = false,
   },
