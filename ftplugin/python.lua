@@ -7,3 +7,6 @@ map("i", "<leader>if", "if :i", { noremap = true })
 map("i", "<C-o>", "o", { noremap = true })
 
 map("n", "<leader>o", "wbiOptional[ea]", { noremap = true })
+
+local opt = vim.opt
+opt.formatexpr = ""

@@ -70,14 +70,6 @@ return {
     },
   },
   {
-    'nvim-telescope/telescope-frecency.nvim',
-    requires = {'tami5/sql.nvim'},
-    config = function()
-      require'telescope'.load_extension('frecency')
-    end
-  },
-
-  {
     "ludovicchabant/vim-lawrencium",
     config = function(plug, opts)
       vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)

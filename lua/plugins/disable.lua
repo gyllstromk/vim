@@ -1,15 +1,27 @@
 return {
   {
-    "folke/flash.nvim",
-    enabled = false,
-  },
-  {
     "akinsho/bufferline.nvim",
     enabled = false,
   },
   {
-    "rcarriga/nvim-notify",
-    --enabled = false,
+    "folke/flash.nvim",
+    enabled = false,
+  },
+  {
+    "indent-blankline.nvim",
+    enabled = false,
+  },
+  {
+    "lualine.nvim",
+    enabled = false,
+  },
+  {
+    "mini.icons",
+    enabled = false,
+  },
+  {
+    "mini.indentscope",
+    enabled = false,
   },
   {
     "nvimdev/dashboard-nvim",
@@ -20,15 +32,7 @@ return {
     enabled = false,
   },
   {
-    "lualine.nvim",
-    enabled = false,
-  },
-  {
-    "indent-blankline.nvim",
-    enabled = false,
-  },
-  {
-    "mini.indentscope",
-    enabled = false,
+    "rcarriga/nvim-notify",
+    --enabled = false,
   },
 }
