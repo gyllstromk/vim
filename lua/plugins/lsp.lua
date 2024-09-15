@@ -30,5 +30,9 @@ return {
         timeout_ms = 2500,
       },
     },
+    config = function()
+      local lspconfig = require("lspconfig")
+      lspconfig.basedpyright.setup{}
+    end,
   },
 }
