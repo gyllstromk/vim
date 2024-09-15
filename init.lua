@@ -57,4 +57,4 @@ require("lazy").setup({
     },
   },
 })
-require('meta.metamate').init()
+--require('meta.metamate').init()
