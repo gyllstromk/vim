@@ -1,15 +1,15 @@
 return {
   {
     "akinsho/bufferline.nvim",
-    enabled = false,
+    -- enabled = false,
   },
   {
     "folke/flash.nvim",
-    enabled = false,
+    -- enabled = false,
   },
   {
     "indent-blankline.nvim",
-    enabled = false,
+    -- enabled = false,
   },
   {
     "lualine.nvim",
@@ -17,10 +17,6 @@ return {
   },
   {
     "mini.icons",
-    enabled = false,
-  },
-  {
-    "mini.indentscope",
     enabled = false,
   },
   {
