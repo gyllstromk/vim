@@ -45,15 +45,18 @@ vim.keymap.set("n", "<leader>z", ":Telescope biggrep s<cr>", opts)
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
 
-vim.keymap.set(
-  "n",
-  "<C-]>",
-  function()
-    require("telescope.builtin").lsp_definitions({
-      reuse_win = true,
-    })
-  end
-)
+vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
+vim.keymap.set('n', '<C-\\>', ':aboveleft split<CR>:lua vim.lsp.buf.definition()<CR>', bufopts)
+
+-- vim.keymap.set(
+--   "n",
+--   "<C-]>",
+--   function()
+--     require("telescope.builtin").lsp_definitions({
+--       reuse_win = true,
+--     })
+--   end
+-- )
 
 vim.keymap.set(
   "n",
