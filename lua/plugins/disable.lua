@@ -5,7 +5,7 @@ return {
   },
   {
     "folke/flash.nvim",
-    -- enabled = false,
+    enabled = false,
   },
   {
     "indent-blankline.nvim",
