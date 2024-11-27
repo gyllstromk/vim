@@ -111,6 +111,15 @@ return {
       },
     },
   },
+  {
+    "echasnovski/mini.surround",
+    config = {
+      custom_surroundings = {
+        ['('] = { output = { left = '(', right = ')' } },
+      },
+    }
+  },
+  {
   -- {
   --   "nvim-treesitter",
   --   config = function(plug, opts)
