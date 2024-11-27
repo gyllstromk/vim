@@ -57,4 +57,15 @@ require("lazy").setup({
     },
   },
 })
-require('meta.metamate').init()
+
+-- Define the name of the optional module
+local optional_module = "meta.metamate"
+-- Attempt to load the optional module using pcall()
+local loaded, mod = pcall(require, optional_module)
+-- Check if the module was successfully loaded
+if loaded then
+  require("meta.metamate").init()
+else
+  -- Handle the case where the module is not installed or has an error
+  --print("Module not found or error:", optional_module, mod)
+end
