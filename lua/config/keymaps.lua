@@ -72,5 +72,5 @@ vim.keymap.set(
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 
 -- diff merge
-map("n", "@o", "dd/=======<cr>d/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
+map("n", "@o", "ddk/=======<cr>d/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 map("n", "@t", "d/=======<cr>dd/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
