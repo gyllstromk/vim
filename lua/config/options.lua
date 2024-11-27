@@ -8,13 +8,13 @@ vim.g.maplocalleader = "["
 
 -- show absolute numbers in insert mode, relative in normal mode
 opt.relativenumber = true
-vim.cmd([[
-  augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup numbertoggle
+--   autocmd!
+--   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+--   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+--   augroup END
+-- ]])
 
 opt.hidden = true -- allow background buffers
 opt.joinspaces = false -- join lines without two spaces
@@ -26,7 +26,7 @@ opt.clipboard = ""
 opt.wildmode = "full"
 
 -- gylls
-opt.hlsearch       = false -- highlight matching search
+opt.hlsearch = false -- highlight matching search
 opt.foldenable = false
 
 vim.g.lazyvim_python_lsp = "basedpyright"
