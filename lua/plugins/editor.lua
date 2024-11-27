@@ -120,6 +120,19 @@ return {
     }
   },
   {
+  'nvim-treesitter/nvim-treesitter',
+  run = ':TSUpdate',
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      -- Enable Treesitter highlighting
+      highlight = {
+        enable = true,
+      },
+      -- Set prefer_git to true
+      prefer_git = true,
+    })
+  end,
+  },
   -- {
   --   "nvim-treesitter",
   --   config = function(plug, opts)
