@@ -9,6 +9,7 @@ map("i", "<leader>lx", "logging.exception()i", { noremap = true })
 map("i", "<leader>im", "import ", { noremap = true })
 
 map("n", "<leader>o", "wbiOptional[ea]", { noremap = true })
+map("i", "<leader>df", "pd.DataFrame", { noremap = true })
 
 local opt = vim.opt
 opt.formatexpr = ""
