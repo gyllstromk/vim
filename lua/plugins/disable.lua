@@ -12,6 +12,10 @@ return {
     -- enabled = false,
   },
   {
+    "mini.pairs",
+    enabled = false,
+  },
+  {
     "lualine.nvim",
     enabled = false,
   },
