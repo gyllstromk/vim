@@ -10,6 +10,7 @@ map("i", "<leader>im", "import ", { noremap = true })
 
 map("n", "<leader>o", "wbiOptional[ea]", { noremap = true })
 map("i", "<leader>df", "pd.DataFrame", { noremap = true })
+map("i", "<leader>main", "if __name__ == '__main__':o", { noremap = True})
 
 local opt = vim.opt
 opt.formatexpr = ""
