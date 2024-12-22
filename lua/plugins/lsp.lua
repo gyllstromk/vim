@@ -30,10 +30,10 @@ return {
         timeout_ms = 2500,
       },
     },
-    -- config = function()
-    --   local lspconfig = require("lspconfig")
-    --   lspconfig.config{}
-    --   -- lspconfig.basedpyright.setup{}
-    -- end,
+    config = function()
+      local lspconfig = require("lspconfig")
+      -- lspconfig.config{}
+      lspconfig.basedpyright.setup{}
+    end,
   },
 }
