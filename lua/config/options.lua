@@ -28,6 +28,6 @@ opt.wildmode = "full"
 -- gylls
 opt.hlsearch = false -- highlight matching search
 opt.foldenable = false
-opt.shadafile = ".vim/main.shada"
+opt.shadafile = os.getenv("HOME") .. "/.vim/main.shada"
 
 vim.g.lazyvim_python_lsp = "basedpyright"
