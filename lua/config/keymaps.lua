@@ -11,7 +11,7 @@ local bufopts = {noremap = true, silent = true}
 -- gylls remove these
 cmd("unmap H")
 cmd("unmap L")
-cmd("unmap n")  -- for some reason the new config always defaults n to next (top down) instead of n (search direction)
+cmd("unmap n") -- for some reason the new config always defaults n to next (top down) instead of n (search direction)
 cmd("unmap N")
 --cmd("unmap <leader>l")
 
@@ -36,19 +36,18 @@ cmd("command Q q")
 -- https://github.com/neovim/neovim/issues/20064
 vim.keymap.del({ "n", "i", "v" }, "<A-j>")
 vim.keymap.del({ "n", "i", "v" }, "<A-k>")
-vim.keymap.del({"n"}, "<leader>l")
-vim.keymap.set({"n"}, "<leader>l", ":HgBlame<cr>", opts)
+vim.keymap.del({ "n" }, "<leader>l")
+vim.keymap.set({ "n" }, "<leader>l", ":HgBlame<cr>", opts)
 
-
-vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>A", ":Telescope myles<cr>", opts)
 vim.keymap.set("n", "<leader>H", ":Telescope hg diff<cr>", opts)
 vim.keymap.set("n", "<leader>z", ":Telescope biggrep s<cr>", opts)
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
 
-vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
-vim.keymap.set('n', '<C-\\>', ':aboveleft split<CR>:lua vim.lsp.buf.definition()<CR>', bufopts)
+vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
+vim.keymap.set("n", "<C-\\>", ":aboveleft split<CR>:lua vim.lsp.buf.definition()<CR>", opts)
 
 -- vim.keymap.set(
 --   "n",
@@ -60,21 +59,62 @@ vim.keymap.set('n', '<C-\\>', ':aboveleft split<CR>:lua vim.lsp.buf.definition()
 --   end
 -- )
 
-vim.keymap.set(
-  "n",
-  "<leader>E",
-  function()
-    require("telescope.builtin").find_files({
-      cwd = require("telescope.utils").buffer_dir(),
-      initial_mode="normal",
-    })
-  end
-)
+vim.keymap.set("n", "<leader>E", function()
+	require("telescope.builtin").find_files({
+		cwd = require("telescope.utils").buffer_dir(),
+		initial_mode = "normal",
+	})
+end)
 
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 
 -- diff merge
 map("n", "@o", "ddk/=======<cr>d/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 map("n", "@t", "d/=======<cr>dd/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 
 vim.keymap.set("n", "<leader>B", ":e %:h/BUCK<cr>")
+-- Function to detect the VCS (Git or Mercurial) of the current file
+local function detect_vcs()
+  local git_cmd = "git rev-parse --is-inside-work-tree 2>/dev/null"
+  local hg_cmd = "hg root 2>/dev/null"
+
+  -- Check if the file is in a Git repository
+  if vim.fn.system(git_cmd):find("true") then
+    return "git"
+  end
+
+  -- Check if the file is in a Mercurial repository
+  if vim.fn.system(hg_cmd) ~= "" then
+    return "hg"
+  end
+
+  return nil
+end
+
+local function blame()
+  local vcs = detect_vcs()
+  if vcs == "git" then
+    vim.cmd("Git blame") -- Git blame
+  elseif vcs == "hg" then
+    vim.cmd("HgBlame") -- Replace 'HgBlame' with your Mercurial blame command
+  else
+    print("Not in a Git or Hg repository")
+  end
+end
+
+
+local function vcs_diff()
+  local vcs = detect_vcs()
+  if vcs == "git" then
+      vim.cmd("Gvdiffsplit")
+  elseif vcs == "hg" then
+    vim.cmd("Hgvdiff")
+  else
+    print("Not in a Git or Hg repository")
+  end
+end
+
+-- Map the blame function to a keybinding (e.g., <leader>b)
+vim.keymap.set("n", "<leader>l", blame, { desc = "Blame for the current file" })
+vim.keymap.set("n", "<leader>v", vcs_diff, { desc = "diff for the current file" })
+vim.keymap.set("n", "<leader>V", ":Hgvdiff .^<cr>", opts)

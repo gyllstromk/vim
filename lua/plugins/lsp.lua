@@ -32,8 +32,7 @@ return {
     },
     config = function()
       local lspconfig = require("lspconfig")
-      -- lspconfig.config{}
-      lspconfig.basedpyright.setup{}
+      lspconfig.basedpyright.setup({})
     end,
   },
 }

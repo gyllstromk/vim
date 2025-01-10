@@ -7,17 +7,9 @@ return {
     config = function(_, _)
       vim.api.nvim_set_hl(0, "SignifySignAdd", { link = "GitSignsAdd" })
       vim.api.nvim_set_hl(0, "SignifySignChange", { link = "GitSignsChange" })
-      vim.api.nvim_set_hl(
-        0,
-        "SignifySignChangeDelete",
-        { link = "GitSignsChange" }
-      )
+      vim.api.nvim_set_hl(0, "SignifySignChangeDelete", { link = "GitSignsChange" })
       vim.api.nvim_set_hl(0, "SignifySignDelete", { link = "GitSignsDelete" })
-      vim.api.nvim_set_hl(
-        0,
-        "SignifySignDeleteFirstLine",
-        { link = "GitSignsDelete" }
-      )
+      vim.api.nvim_set_hl(0, "SignifySignDeleteFirstLine", { link = "GitSignsDelete" })
 
       vim.g.signify_sign_add = "▎"
       vim.g.signify_sign_change = "▎"
@@ -29,7 +21,7 @@ return {
 
   {
     "windwp/nvim-autopairs",
-    dependencies = {"nvim-cmp"},
+    dependencies = { "nvim-cmp" },
     config = function()
       require("nvim-autopairs").setup({})
 
@@ -82,6 +74,8 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       defaults = {
         mappings = {
@@ -96,12 +90,12 @@ return {
           },
           -- gylls
           n = {
-              ["o"] = require("telescope.actions").select_horizontal,
-              ["/"] = function(prompt_bufnr)
-                vim.schedule(function()
-                  vim.cmd [[startinsert]]
-                end)
-              end,
+            ["o"] = require("telescope.actions").select_horizontal,
+            ["/"] = function(prompt_bufnr)
+              vim.schedule(function()
+                vim.cmd([[startinsert]])
+              end)
+            end,
           },
         },
       },
@@ -109,12 +103,9 @@ return {
   },
   {
     "ludovicchabant/vim-lawrencium",
-    config = function(plug, opts)
-      vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)
-      vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
-      vim.keymap.set("n", "<leader>V", ":Hgvdiff .^<cr>", opts)
-      vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", { noremap = true })
-    end,
+  },
+  {
+    "tpope/vim-fugitive",
   },
   -- {
   --   "echasnovski/mini.comment",
@@ -138,10 +129,10 @@ return {
     "numToStr/Comment.nvim",
     config = {
       opleader = {
-        line = '<leader>cn',
+        line = "<leader>cn",
       },
       toggler = {
-        line = '<leader>cn',
+        line = "<leader>cn",
       },
       mappings = {
         basic = true,
@@ -153,23 +144,23 @@ return {
     "echasnovski/mini.surround",
     config = {
       custom_surroundings = {
-        ['('] = { output = { left = '(', right = ')' } },
+        ["("] = { output = { left = "(", right = ")" } },
       },
-    }
+    },
   },
   {
-  'nvim-treesitter/nvim-treesitter',
-  run = ':TSUpdate',
-  config = function()
-    require('nvim-treesitter.configs').setup({
-      -- Enable Treesitter highlighting
-      highlight = {
-        enable = true,
-      },
-      -- Set prefer_git to true
-      prefer_git = true,
-    })
-  end,
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        -- Enable Treesitter highlighting
+        highlight = {
+          enable = true,
+        },
+        -- Set prefer_git to true
+        prefer_git = true,
+      })
+    end,
   },
   -- {
   --   "nvim-treesitter",
