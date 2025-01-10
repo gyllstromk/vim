@@ -33,12 +33,50 @@ return {
     config = function()
       require("nvim-autopairs").setup({})
 
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local cmp = require("cmp")
-      cmp.event:on(
-        "confirm_done",
-        cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })
-      )
+      -- local cmp_autopairs = require("nvim-autopairs")
+      -- local cmp = require("nvim-cmp")
+      -- cmp.event:on(
+      --   "confirm_done",
+      --   cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })
+      -- )
+
+      local npairs = require('nvim-autopairs')
+      -- Initialize nvim-autopairs
+      npairs.setup({})
+      -- Create a custom rule
+      local Rule = require('nvim-autopairs.rule')
+      -- Add a rule to detect "{" and prepend "f" to the string
+      npairs.add_rules({
+          Rule("{", "}")
+        :replace_endpair(function(opts)
+            -- Schedule the modification to avoid the error
+            vim.schedule(function()
+                -- Get the current line and cursor position
+                local line = vim.api.nvim_get_current_line()
+                local col = opts.col
+                -- Find the start and end of the string (assumes double quotes)
+                local start_quote = line:find('"', 1, true)
+                if start_quote then
+                  local end_quote = line:find('"', start_quote + 1, true)
+                  -- Check if the cursor is within a string
+                  if end_quote and col > start_quote and col <= end_quote then
+                      -- Check if the string starts with an "f"
+                      local prefix = line:sub(start_quote - 1, start_quote - 1)
+                      if prefix ~= 'f' then
+                          -- Prepend "f" to the string
+                          local new_line = line:sub(1, start_quote - 1) .. 'f' .. line:sub(start_quote)
+                          vim.api.nvim_set_current_line(new_line)
+                          -- for some reason, opts.row is nil
+                          local row = vim.api.nvim_win_get_cursor(0)[1]
+                          vim.api.nvim_win_set_cursor(0, {row, opts.col + 1})
+                      end
+                  end
+              end
+            end)
+            return "}"
+        end)
+        :set_end_pair_length(1)
+      })
     end,
   },
 

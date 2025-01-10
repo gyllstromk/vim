@@ -5,6 +5,8 @@
 
 local map = vim.api.nvim_set_keymap
 local cmd = vim.cmd
+local opts = {noremap = true, silent = true}
+local bufopts = {noremap = true, silent = true}
 
 -- gylls remove these
 cmd("unmap H")
