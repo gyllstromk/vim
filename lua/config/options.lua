@@ -30,4 +30,15 @@ opt.hlsearch = false -- highlight matching search
 opt.foldenable = false
 opt.shadafile = os.getenv("HOME") .. "/.vim/main.shada"
 
-vim.g.lazyvim_python_lsp = "basedpyright"
+-- Function to get the hostname
+local function get_hostname()
+  local handle = io.popen("hostname")
+  local hostname = handle:read("*a")
+  handle:close()
+  return hostname:match("^%s*(.-)%s*$")  -- Trim any leading/trailing whitespace
+end
+
+local hostname = get_hostname()
+if hostname:sub(-11) ~= "fbinfra.net" then
+  -- vim.g.lazyvim_python_lsp = "basedpyright"
+end
