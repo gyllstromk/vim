@@ -23,6 +23,7 @@ return {
 		"windwp/nvim-autopairs",
 		dependencies = { "nvim-cmp" },
 		config = function()
+			print("ah?")
 			require("nvim-autopairs").setup({})
 
 			-- local cmp_autopairs = require("nvim-autopairs")
@@ -32,6 +33,7 @@ return {
 			--   cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })
 			-- )
 
+			print("hello")
 			local npairs = require("nvim-autopairs")
 			-- Initialize nvim-autopairs
 			npairs.setup({})
@@ -40,6 +42,7 @@ return {
 			-- Add a rule to detect "{" and prepend "f" to the string
 			npairs.add_rules({
 				Rule("{", "}"):replace_endpair(function(opts)
+					print("suuup")
 					-- Schedule the modification to avoid the error
 					vim.schedule(function()
 						-- Get the current line and cursor position
