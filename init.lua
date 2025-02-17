@@ -69,3 +69,33 @@ else
   -- Handle the case where the module is not installed or has an error
   --print("Module not found or error:", optional_module, mod)
 end
+local function open_build_file()
+  -- Get the directory of the current file
+  local current_file = vim.fn.expand('%:p')
+  local dir = vim.fn.fnamemodify(current_file, ':h')
+  -- Define the possible build files
+  local build_files = { 'BUCK', 'TARGETS' }
+  -- Function to check for build files in a directory
+  local function find_build_file(directory)
+    for _, file in ipairs(build_files) do
+      local filepath = directory .. '/' .. file
+      if vim.fn.filereadable(filepath) == 1 then
+        return filepath
+      end
+    end
+    return nil
+  end
+  -- Traverse up the directory tree
+  while dir ~= '/' do
+    local found_file = find_build_file(dir)
+    if found_file then
+      vim.cmd('edit ' .. found_file)
+      return
+    end
+    dir = vim.fn.fnamemodify(dir, ':h')
+  end
+  -- If no build file is found, print a message
+  print('No build file (BUCK or TARGETS) found in the directory tree.')
+end
+-- Create a command to call the function
+vim.api.nvim_create_user_command('OpenBuildFile', open_build_file, {})

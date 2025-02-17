@@ -9,7 +9,7 @@ return {
 	},
 	{
 		"indent-blankline.nvim",
-		-- enabled = false,
+		enabled = false,
 	},
 	{
 		"mini.pairs",
@@ -32,11 +32,11 @@ return {
 		enabled = false,
 	},
 	{
-		"stevearc/conform.nvim",
-		enabled = false,
-	},
-	{
 		"rcarriga/nvim-notify",
 		--enabled = false,
+	},
+	{
+		"echasnovski/mini.surround",
+		enabled = false,
 	},
 }
