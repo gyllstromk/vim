@@ -72,7 +72,7 @@ vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 map("n", "@o", "ddk/=======<cr>d/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 map("n", "@t", "d/=======<cr>dd/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 
-vim.keymap.set("n", "<leader>B", ":e %:h/BUCK<cr>")
+vim.keymap.set("n", "<leader>B", ":OpenBuildFile<cr>")
 -- Function to detect the VCS (Git or Mercurial) of the current file
 local function detect_vcs()
 	local git_cmd = "git rev-parse --is-inside-work-tree 2>/dev/null"
