@@ -105,6 +105,12 @@ return {
 	},
 	{
 		"ludovicchabant/vim-lawrencium",
+		config = function(plug, opts)
+			vim.keymap.set("n", "<leader>g", ":Hgstatus<cr>", opts)
+			vim.keymap.set("n", "<leader>v", ":Hgvdiff<cr>", opts)
+			vim.keymap.set("n", "<leader>V", ":Hgvdiff .^<cr>", opts)
+			vim.keymap.set("n", "<leader>l", ":HgBlame<cr>", { noremap = true })
+		end,
 	},
 	{
 		"tpope/vim-fugitive",

@@ -5,8 +5,8 @@
 
 local map = vim.api.nvim_set_keymap
 local cmd = vim.cmd
-local opts = {noremap = true, silent = true}
-local bufopts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
+local bufopts = { noremap = true, silent = true }
 
 -- gylls remove these
 cmd("unmap H")
@@ -75,46 +75,85 @@ map("n", "@t", "d/=======<cr>dd/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>B", ":e %:h/BUCK<cr>")
 -- Function to detect the VCS (Git or Mercurial) of the current file
 local function detect_vcs()
-  local git_cmd = "git rev-parse --is-inside-work-tree 2>/dev/null"
-  local hg_cmd = "hg root 2>/dev/null"
+	local git_cmd = "git rev-parse --is-inside-work-tree 2>/dev/null"
+	local hg_cmd = "hg root 2>/dev/null"
 
-  -- Check if the file is in a Git repository
-  if vim.fn.system(git_cmd):find("true") then
-    return "git"
-  end
+	-- Check if the file is in a Git repository
+	if vim.fn.system(git_cmd):find("true") then
+		return "git"
+	end
 
-  -- Check if the file is in a Mercurial repository
-  if vim.fn.system(hg_cmd) ~= "" then
-    return "hg"
-  end
+	-- Check if the file is in a Mercurial repository
+	if vim.fn.system(hg_cmd) ~= "" then
+		return "hg"
+	end
 
-  return nil
+	return nil
 end
 
 local function blame()
-  local vcs = detect_vcs()
-  if vcs == "git" then
-    vim.cmd("Git blame") -- Git blame
-  elseif vcs == "hg" then
-    vim.cmd("HgBlame") -- Replace 'HgBlame' with your Mercurial blame command
-  else
-    print("Not in a Git or Hg repository")
-  end
+	local vcs = detect_vcs()
+	if vcs == "git" then
+		vim.cmd("Git blame") -- Git blame
+	elseif vcs == "hg" then
+		vim.cmd("HgBlame") -- Replace 'HgBlame' with your Mercurial blame command
+	else
+		print("Not in a Git or Hg repository")
+	end
 end
 
+local function file_exists(file_path)
+	local file = io.open(file_path, "r")
+	if file then
+		file:close()
+		return true
+	else
+		return false
+	end
+end
 
 local function vcs_diff()
-  local vcs = detect_vcs()
-  if vcs == "git" then
-      vim.cmd("Gvdiffsplit")
-  elseif vcs == "hg" then
-    vim.cmd("Hgvdiff")
-  else
-    print("Not in a Git or Hg repository")
-  end
+	local vcs = detect_vcs()
+	if vcs == "git" then
+		vim.cmd("Gvdiffsplit")
+	elseif vcs == "hg" then
+		vim.cmd("Hgvdiff")
+	else
+		print("Not in a Git or Hg repository")
+	end
 end
 
 -- Map the blame function to a keybinding (e.g., <leader>b)
 vim.keymap.set("n", "<leader>l", blame, { desc = "Blame for the current file" })
 vim.keymap.set("n", "<leader>v", vcs_diff, { desc = "diff for the current file" })
 vim.keymap.set("n", "<leader>V", ":Hgvdiff .^<cr>", opts)
+
+function open_cf_file(prefix)
+	-- Get the current visual selection
+	local start_pos = vim.fn.getpos("'<")
+	local end_pos = vim.fn.getpos("'>")
+	local lines = vim.fn.getline(start_pos[2], end_pos[2])
+
+	-- Extract the selected text
+	if #lines > 0 then
+		lines[1] = string.sub(lines[1], start_pos[3], -1)
+		lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
+	end
+	local selected_text = table.concat(lines, "\n")
+	selected_text = selected_text:gsub("^%s+", ""):gsub("%s+$", "")
+	selected_text = selected_text:sub(2, -2)
+	local extensions = { "cinc", "cconf" }
+	for _, ext in ipairs(extensions) do
+		local file_path = prefix .. selected_text .. "." .. ext
+		local expanded_file_path = vim.fn.expand(file_path)
+		if file_exists(expanded_file_path) then
+			vim.cmd("edit " .. expanded_file_path)
+			return
+		end
+	end
+
+	print("Configerator file does not exist: " .. selected_text)
+end
+
+-- Map a key to call the function
+vim.keymap.set("v", "<leader>cf", ":lua open_cf_file('~/configerator/source/')<CR>", { noremap = true, silent = true })
