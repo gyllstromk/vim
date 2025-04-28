@@ -13,16 +13,20 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+local meta_nvim_dir = "/usr/share/fb-editor-support/nvim"
+
+-- Check if the directory exists
+local function dir_exists(path)
+  local stat = vim.loop.fs_stat(path)
+  return stat and stat.type == "directory"
+end
+
+-- Define your plugin setup table
+local plugins = {
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "gruvbox" } },
     -- add Neovim@Meta and import the language service configuration
-    {
-      dir = "/usr/share/fb-editor-support/nvim",
-      name = "meta.nvim",
-      import = "meta.lazyvim",
-    },
     -- import/override with your plugins in `~/.config/nvim/lua/plugins`
     -- this can overwrite configurations from all of the above
     { import = "plugins" },
@@ -56,7 +60,21 @@ require("lazy").setup({
       },
     },
   },
-})
+}
+
+-- Conditionally add the meta.nvim configuration
+if dir_exists(meta_nvim_dir) then
+  table.insert(plugins.spec, {
+    dir = meta_nvim_dir,
+    name = "meta.nvim",
+    import = "meta.lazyvim",
+  })
+else
+  print("meta.nvim directory not found, skipping import.")
+end
+
+-- Setup plugins
+require("lazy").setup(plugins)
 
 -- Define the name of the optional module
 local optional_module = "meta.metamate"
@@ -71,14 +89,14 @@ else
 end
 local function open_build_file()
   -- Get the directory of the current file
-  local current_file = vim.fn.expand('%:p')
-  local dir = vim.fn.fnamemodify(current_file, ':h')
+  local current_file = vim.fn.expand("%:p")
+  local dir = vim.fn.fnamemodify(current_file, ":h")
   -- Define the possible build files
-  local build_files = { 'BUCK', 'TARGETS' }
+  local build_files = { "BUCK", "TARGETS" }
   -- Function to check for build files in a directory
   local function find_build_file(directory)
     for _, file in ipairs(build_files) do
-      local filepath = directory .. '/' .. file
+      local filepath = directory .. "/" .. file
       if vim.fn.filereadable(filepath) == 1 then
         return filepath
       end
@@ -86,16 +104,16 @@ local function open_build_file()
     return nil
   end
   -- Traverse up the directory tree
-  while dir ~= '/' do
+  while dir ~= "/" do
     local found_file = find_build_file(dir)
     if found_file then
-      vim.cmd('edit ' .. found_file)
+      vim.cmd("edit " .. found_file)
       return
     end
-    dir = vim.fn.fnamemodify(dir, ':h')
+    dir = vim.fn.fnamemodify(dir, ":h")
   end
   -- If no build file is found, print a message
-  print('No build file (BUCK or TARGETS) found in the directory tree.')
+  print("No build file (BUCK or TARGETS) found in the directory tree.")
 end
 -- Create a command to call the function
-vim.api.nvim_create_user_command('OpenBuildFile', open_build_file, {})
+vim.api.nvim_create_user_command("OpenBuildFile", open_build_file, {})
