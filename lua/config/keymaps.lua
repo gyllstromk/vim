@@ -140,8 +140,7 @@ function open_cf_file(prefix)
 		lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
 	end
 	local selected_text = table.concat(lines, "\n")
-	selected_text = selected_text:gsub("^%s+", ""):gsub("%s+$", "")
-	selected_text = selected_text:sub(2, -2)
+  selected_text = string.match(selected_text, '"(.-)"')
 	local extensions = { "cinc", "cconf" }
 	for _, ext in ipairs(extensions) do
 		local file_path = prefix .. selected_text .. "." .. ext
