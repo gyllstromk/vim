@@ -80,6 +80,7 @@ return {
     config = function()
       require("telescope").setup({
         defaults = {
+          path_display = { "smart" },
           mappings = {
             i = {
               -- I don't like having to tap <Esc> twice to exit Telescope.
