@@ -72,7 +72,7 @@ vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 map("n", "@o", "ddk/=======<cr>d/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 map("n", "@t", "d/=======<cr>dd/>>>>>>><cr>dd/<<<<<<<<cr>", { noremap = true })
 
-vim.keymap.set("n", "<leader>B", ":e %:h/BUCK<cr>")
+vim.keymap.set("n", "<leader>B", ":OpenBuildFile<cr>")
 -- Function to detect the VCS (Git or Mercurial) of the current file
 local function detect_vcs()
 	local git_cmd = "git rev-parse --is-inside-work-tree 2>/dev/null"
@@ -140,8 +140,7 @@ function open_cf_file(prefix)
 		lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
 	end
 	local selected_text = table.concat(lines, "\n")
-	selected_text = selected_text:gsub("^%s+", ""):gsub("%s+$", "")
-	selected_text = selected_text:sub(2, -2)
+  selected_text = string.match(selected_text, '"(.-)"')
 	local extensions = { "cinc", "cconf" }
 	for _, ext in ipairs(extensions) do
 		local file_path = prefix .. selected_text .. "." .. ext
