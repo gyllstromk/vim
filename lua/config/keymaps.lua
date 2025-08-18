@@ -43,6 +43,7 @@ vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", 
 vim.keymap.set("n", "<leader>A", ":Telescope myles<cr>", opts)
 vim.keymap.set("n", "<leader>H", ":Telescope hg diff<cr>", opts)
 vim.keymap.set("n", "<leader>z", ":Telescope biggrep s<cr>", opts)
+vim.keymap.set("n", "<leader>/", ":Telescope search_history initial_mode=normal<cr>", opts)
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
 
