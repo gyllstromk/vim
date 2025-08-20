@@ -117,3 +117,9 @@ local function open_build_file()
 end
 -- Create a command to call the function
 vim.api.nvim_create_user_command("OpenBuildFile", open_build_file, {})
+vim.api.nvim_create_augroup("SearchMark", { clear = true })
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  group = "SearchMark",
+  pattern = { "/", "?" },
+  command = "normal! m'",
+})
