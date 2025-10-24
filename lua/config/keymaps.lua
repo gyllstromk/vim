@@ -49,6 +49,9 @@ vim.keymap.set("n", "gr", ':Telescope lsp_references {file_ignore_patterns={"tes
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("n", "<leader>yf", ":lua vim.fn.setreg('+', vim.fn.expand('%:p'))<cr>", opts)
+vim.keymap.set("n", "<leader>yf", ":lua vim.fn.setreg('+', vim.fn.expand('%:p'))<cr>", opts)
+vim.keymap.set("n", "<leader>yd", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h'))<cr>", opts)
+vim.keymap.set("n", "<leader>yd", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h'))<cr>", opts)
 
 vim.keymap.set("n", "<leader>bt", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h') .. ':' .. vim.fn.expand('<cword>'))<cr>", opts)
 vim.keymap.set("v", "<leader>bt", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h') .. ':' .. vim.fn.expand('<cword>'))<cr>", opts)
