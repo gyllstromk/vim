@@ -30,20 +30,20 @@ return {
 				timeout_ms = 2500,
 			},
 		},
-		config = function()
-			local lspconfig = require("lspconfig")
-			local optional_module = "meta.metamate"
-			-- Attempt to load the optional module using pcall()
-			local loaded, mod = pcall(require, optional_module)
-			if not loaded then
-				lspconfig.basedpyright.setup({})
-			end
+		-- config = function()
+		-- 	local lspconfig = require("lspconfig")
+		-- 	local optional_module = "meta.metamate"
+		-- 	-- Attempt to load the optional module using pcall()
+		-- 	local loaded, mod = pcall(require, optional_module)
+		-- 	if not loaded then
+		-- 		lspconfig.basedpyright.setup({})
+		-- 	end
 			-- local servers = { "prettier@meta", "code-compose", "rust-analyzer@meta", "fb-pyright-ls@meta", "pyre@meta", "thriftlsp@meta", "cppls@meta", "linttool@meta" }
 			-- for _, lsp in ipairs(servers) do
 			--   require("lspconfig")[lsp].setup {
 			--     on_attach = on_attach,
 			--   }
 			-- end
-		end,
+		-- end,
 	},
 }
