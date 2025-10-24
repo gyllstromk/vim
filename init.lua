@@ -25,7 +25,7 @@ end
 local plugins = {
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "gruvbox" } },
+    { "LazyVim/LazyVim", tag = "v14.15.1", import = "lazyvim.plugins", opts = { colorscheme = "gruvbox" } },
     -- add Neovim@Meta and import the language service configuration
     -- import/override with your plugins in `~/.config/nvim/lua/plugins`
     -- this can overwrite configurations from all of the above
