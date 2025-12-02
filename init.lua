@@ -25,7 +25,7 @@ end
 local plugins = {
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "gruvbox" } },
+    { "LazyVim/LazyVim", tag = "v14.15.1", import = "lazyvim.plugins", opts = { colorscheme = "gruvbox" } },
     -- add Neovim@Meta and import the language service configuration
     -- import/override with your plugins in `~/.config/nvim/lua/plugins`
     -- this can overwrite configurations from all of the above
@@ -117,3 +117,9 @@ local function open_build_file()
 end
 -- Create a command to call the function
 vim.api.nvim_create_user_command("OpenBuildFile", open_build_file, {})
+vim.api.nvim_create_augroup("SearchMark", { clear = true })
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  group = "SearchMark",
+  pattern = { "/", "?" },
+  command = "normal! m'",
+})

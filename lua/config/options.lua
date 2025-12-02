@@ -19,7 +19,7 @@ opt.relativenumber = true
 opt.hidden = true -- allow background buffers
 opt.joinspaces = false -- join lines without two spaces
 
--- Disable LazyVim's default clipboard.
+-- use clipboard for all yanks
 opt.clipboard = ""
 
 -- Tab complete for cmd mode should autocomplete the first result immediately.

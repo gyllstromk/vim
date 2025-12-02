@@ -43,11 +43,30 @@ vim.keymap.set("n", "<leader>a", ":Telescope oldfiles initial_mode=normal<cr>", 
 vim.keymap.set("n", "<leader>A", ":Telescope myles<cr>", opts)
 vim.keymap.set("n", "<leader>H", ":Telescope hg diff<cr>", opts)
 vim.keymap.set("n", "<leader>z", ":Telescope biggrep s<cr>", opts)
+vim.keymap.set("n", "<leader>/", ":Telescope search_history initial_mode=normal<cr>", opts)
+vim.keymap.set("n", "gr", ':Telescope lsp_references {file_ignore_patterns={"test"}} initial_mode=normal<cr>', {noremap = true, silent = true, remap = false, buffer = true})
+
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
+vim.keymap.set("n", "<leader>yf", ":lua vim.fn.setreg('+', vim.fn.expand('%:p'))<cr>", opts)
+vim.keymap.set("n", "<leader>yf", ":lua vim.fn.setreg('+', vim.fn.expand('%:p'))<cr>", opts)
+vim.keymap.set("n", "<leader>yd", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h'))<cr>", opts)
+vim.keymap.set("n", "<leader>yd", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h'))<cr>", opts)
+
+vim.keymap.set("n", "<leader>bt", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h') .. ':' .. vim.fn.expand('<cword>'))<cr>", opts)
+vim.keymap.set("v", "<leader>bt", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h') .. ':' .. vim.fn.expand('<cword>'))<cr>", opts)
+
+vim.keymap.set("n", "<leader>yc", ":GetCodehubLinkYank<cr>")
+vim.keymap.set("v", "<leader>yc", ":GetCodehubLinkYank<cr>")
 
 vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "<C-\\>", ":aboveleft split<CR>:lua vim.lsp.buf.definition()<CR>", opts)
+
+vim.keymap.set("n", "y", '"+y', opts)
+vim.keymap.set("v", "y", '"+y', opts)
+vim.keymap.set("n", "Y", '"+Y', opts)
+vim.keymap.set("v", "Y", '"+Y', opts)
+
 
 -- vim.keymap.set(
 --   "n",

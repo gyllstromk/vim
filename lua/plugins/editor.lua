@@ -73,6 +73,7 @@ return {
     end,
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { 'jackysee/telescope-hg.nvim' },
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
@@ -113,6 +114,7 @@ return {
         },
       })
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("hg")
     end,
   },
   {
