@@ -3,6 +3,32 @@
 -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+local function yank_path_from_hg_root()
+  -- Find the .hg directory upwards from current file's directory
+  local hg_dir = vim.fn.finddir('.hg', '.;')
+  if hg_dir == '' then
+    -- No hg repo found; fall back to full path
+    vim.fn.setreg('+', vim.fn.expand('%:p'))
+    return
+  end
+
+  -- Get the repo root (parent directory of .hg)
+  local repo_root = vim.fn.fnamemodify(hg_dir, ':h')
+
+  local full_path = vim.fn.expand('%:p')
+
+  -- Ensure trailing slash for clean subpath extraction
+  if not repo_root:match('/$') then
+    repo_root = repo_root .. '/'
+  end
+
+  -- Strip repo_root from full_path if it matches
+  local rel_from_repo = full_path:gsub('^' .. vim.pesc(repo_root), '')
+  local stripped = rel_from_repo:gsub('^[^/]+/', '')
+
+  vim.fn.setreg('+', stripped)
+end
+
 local map = vim.api.nvim_set_keymap
 local cmd = vim.cmd
 local opts = { noremap = true, silent = true }
@@ -49,8 +75,14 @@ vim.keymap.set("n", "gr", ':Telescope lsp_references {file_ignore_patterns={"tes
 vim.keymap.set("n", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("v", "<leader>po", ":GetCodehubLink<cr>", opts)
 vim.keymap.set("n", "<leader>yf", ":lua vim.fn.setreg('+', vim.fn.expand('%:p'))<cr>", opts)
-vim.keymap.set("n", "<leader>yf", ":lua vim.fn.setreg('+', vim.fn.expand('%:p'))<cr>", opts)
-vim.keymap.set("n", "<leader>yd", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h'))<cr>", opts)
+
+-- Keymap
+vim.keymap.set(
+  'n',
+  '<leader>yrf',
+  yank_path_from_hg_root,
+  { noremap = true, silent = true }
+)
 vim.keymap.set("n", "<leader>yd", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h'))<cr>", opts)
 
 vim.keymap.set("n", "<leader>bt", ":lua vim.fn.setreg('+', vim.fn.expand('%:p:h') .. ':' .. vim.fn.expand('<cword>'))<cr>", opts)
